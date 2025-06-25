@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bicycle Shop</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    header {
+      background: linear-gradient(to right, #20635d, #015555);
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+    nav {
+      background-color: #333;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #555;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+    .product {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 1rem;
+      transition: transform 0.3s;
+    }
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+    .product h3 {
+      margin: 0.5rem 0;
+    }
+    .product p {
+      margin: 0.3rem 0;
+      color: #555;
+    }
+    .price {
+      color: green;
+      font-weight: bold;
+    }
+    .category-title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      color: #333;
+    }
+
+    /* Button Styles */
+    button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #555;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .products {
+        padding: 1rem;
+      }
+      nav {
+        padding: 0.5rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+        margin: 0 10px;
+      }
+      .product {
+        padding: 0.8rem;
+      }
+      .product img {
+        height: 180px;
+      }
+      .category-title {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      .products {
+        padding: 0.5rem;
+        grid-template-columns: 1fr 1fr;
+      }
+      nav a {
+        font-size: 0.8rem;
+        margin: 0 5px;
+      }
+      .product {
+        padding: 0.6rem;
+      }
+      .product img {
+        height: 150px;
+      }
+      .category-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media screen and (max-width: 320px) {
+      nav a {
+        font-size: 0.7rem;
+        padding: 8px 15px;
+      }
+      .product {
+        padding: 0.5rem;
+      }
+      .product img {
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Bicycle Shop</h1>
+    <p>Explore our wide range of premium bikes and accessories</p>
+  </header>
+  <!-- Search bar container with inline CSS -->
+<!-- Sticky Search bar container with inline CSS -->
+<div class="search-wrapper" style="position: sticky; top: 0; background: white; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 30px; margin-top: 0; padding: 10px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  
+  <div style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Type part name (e.g., Crank, SPD pedals)" 
+      onkeyup="searchPart(event)"
+      style="width: 300px; padding: 10px; font-size: 16px; border: 2px solid #ddd; border-radius: 10px; outline: none; text-align: center;"
+    >
+
+    <button 
+      onclick="triggerSearch()" 
+      style="background: #4CAF50; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer;"
+      title="Search"
+    >
+      ➔
+    </button>
+  </div>
+
+  <div id="searchResult" style="margin-top: 10px; font-size: 18px; font-weight: bold;"></div>
+</div>
+
+<!-- JavaScript for searching and scrolling -->
+<script>
+function searchPart(event) {
+  var input = document.getElementById('searchInput').value.trim().toLowerCase();
+  var products = document.getElementsByClassName('product');
+  var resultBox = document.getElementById('searchResult');
+  var found = false;
+  var firstMatch = null;
+
+  for (var i = 0; i < products.length; i++) {
+    var productText = products[i].textContent.trim().toLowerCase();
+    if (productText.includes(input)) {
+      products[i].style.display = "block";
+      if (!firstMatch) {
+        firstMatch = products[i];
+      }
+      found = true;
+    } else {
+      products[i].style.display = "none";
+    }
+  }
+
+  if (input === '') {
+    resultBox.textContent = '';
+    for (var i = 0; i < products.length; i++) {
+      products[i].style.display = "block";
+    }
+  } else if (found) {
+    resultBox.textContent = 'Results found';
+    if (event.key === "Enter" && firstMatch) {
+      firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  } else {
+    resultBox.textContent = 'No results found.';
+  }
+}
+
+function triggerSearch() {
+  var event = { key: "Enter" };
+  searchPart(event);
+}
+</script>
+
+
+
+
+  <!-- Category Selection Bar -->
+  <nav>
+    <a href="#mountain-bikes">MTB</a>
+    <a href="#road-bikes">Road Bikes</a>
+    <a href="#bmx-bikes">BMX</a>
+    <a href="#bike-parts">Parts</a>
+  </nav>
+
+  <!-- Mountain Bikes Section -->
+  <div class="category-title" id="mountain-bikes">Mountain Bikes</div>
+  <section class="products">
+    <div class="product">
+      <img src="https://iili.io/3GbiSna.md.jpg" alt="Mountain Bike 1">
+      <h3>Bridgestone</h3>
+      <p>7 speed</p>
+      <p>gear 3 by 7</p>
+      <p>brake rhyme break</p>
+      <p>Category: Mountain</p>
+      <p>size - 24</p>
+      <p class="price">KSH. 14,00</p>
+     <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Bridgestone%20 15,000'">Contact Us</button>
+    </div>
+    <div class="product">
+      <img src="https://iili.io/3GbivZg.md.jpg" alt="Mountain Bike 2">
+      <h3>Mountain Bike 2</h3>
+      <p>gear - 3 by 7</p>
+      <p>brake- rhyme break</p>
+      <p>category- mountain-bike</p>
+      <p>size - 24</p>
+      <p class="price">KSH. 14,000</p>
+      <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20aluminium frame%20Mountain bike 2 %20 7 speed size 24%20 14,000'">Contact Us</button>
+    </div>
+    <div class="product">
+        <img src="https://iili.io/3GbikwF.md.jpg" alt="Mountain Bike 2">
+        <h3>ATECX</h3>
+        <p>Category: Mountain</p>
+        <P>Aluminium midium frame size 27.5</P>
+          <P>8 by 3 speed gears system</P>
+          <P>Hydraulic  brake system</P>
+        <p>Brand: ATEGX</p>
+        <p class="price">KSH. 30,000</p>
+              <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20aluminium frame%20ATECX%20 30,000'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbiMCb.md.jpg" alt="Mountain Bike 2">
+        <h3>CALLAS</h3>
+        <p>Category: Mountain</p>
+        <P>Aluminium midium frame size 27.5</P>
+          <P>8 by 3 speed gears system </P>
+          <p></p>
+          <P>Hydraulic brake system</P>
+        <p>Brand: CALLAS</p>
+        <p class="price">KSH. 35,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20Mountain%20Bike%202%20for%20CALLAS%20mtb%2035,000'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3Gbi0u9.md.jpg" alt="Mountain Bike 2">
+        <h3>GT</h3>
+        <p>Category: Mountain</p>
+        <P>Size 26 Medium</P>
+          <p>7 by 3 speed gears</p> 
+          <P>Crank 48-38-28</P>
+        <p>Brand: GT</p>
+        <p class="price">KSH. 27,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20Mountain%20Bike%202%20for%20GT%20 mtb%2027,000'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3Mpq5Zv.md.jpg" alt="Mountain Bike 2">
+        <h3>CARRERA</h3>
+        <p>Category: Mountain</p>
+        <P>Size 29 Medium</P>
+          <p>8 by 3 speed gears</p> 
+          <P>Crank 44-32-24</P>
+        <p>Brand: Carrera</p>
+        <p class="price">KSH. 45,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20Mountain%20Bike%202%20for%20CARRERA%20 MTB%2045,000'">Contact Us</button>
+      </div>
+  </section>
+
+  <!-- Road Bikes Section -->
+  <div class="category-title" id="road-bikes">Road Bikes</div>
+  <section class="products">
+    <div class="product">
+      <img src="https://iili.io/3Gbi4FR.md.jpg" alt="Road Bike 1">
+      <p>Category: Road</p>
+      <p>8 speed gear system </p>
+        <p>Aluminium frame</p>
+        <p>Mechanical disk brakes</p>
+        <p>8t crank size</p>
+      <p>Brand: Orbsa</p>
+      <p class="price">KSH. 40,000</p>
+      <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20Road%20Bike%201%20for%20 ROADBIKE%20 alluminium frame%20orbsa%20 40,000'">Contact Us</button>
+    </div>
+    <div class="product">
+  <img src="https://iili.io/FTNJlzQ.md.jpg" alt="Cannondale Lefty Gravel/Cross">
+  <p>Category: Gravel/Cross</p>
+  <p>Shimano 2x8 groupset</p>
+  <p>Aluminium frame</p>
+  <p>Mechanical brakes</p>
+  <p>Size: 53cm</p>
+  <p>Brand: Cannondale</p>
+  <p class="price">KSH. 50,000</p>
+  <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20Cannondale%20Lefty%20Gravel/Cross%20bike%20-%2053cm%2C%20Shimano%202x8%2C%20Aluminium%20frame%2C%20Mechanical%20brakes%20for%20KSH%2040%2C000'">Contact Us</button>
+</div>
+<div class="product">
+  <img src="https://iili.io/FTNJamx.md.jpg" alt="Cannondale MTB 27.5">
+  <p>Category: MTB 27.5</p>
+  <p>Aluminium Frame (Medium)</p>
+  <p>Shimano Deore 1x10 Groupset</p>
+  <p>Tektro Hydraulic Brakes</p>
+  <p>Suntour Fork with Lockout</p>
+  <p>Wide Tires (2.8")</p>
+  <p>Brand: Cannondale</p>
+  <p class="price">KSH. 82,000</p>
+  <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20Cannondale%20MTB%2027.5%20bike%20-%20Medium%20Aluminium%2C%20Shimano%20Deore%201x10%2C%20Tektro%20Hydraulic%20Brakes%2C%20Suntour%20Fork%2C%20Wide%20Tires%202.8%22%20for%20KSH%2075%2C000'">Contact Us</button>
+</div>
+    <div class="product">
+  <img src="https://iili.io/FTNJ0XV.md.jpg" alt="TT ORBEA Road Bike">
+  <p><strong>QUICK SALE</strong></p>
+  <p>Category: Road Bike (TT)</p>
+  <p>Ultegra 10-speed Groupset</p>
+  <p>Carbon Frame (Medium - 52cm)</p>
+  <p>Brand: ORBEA</p>
+  <p class="price">KSH. 145,000</p>
+  <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20TT%20ORBEA%20Road%20Bike%20with%20Ultegra%2010-speed%20Groupset%2C%20Carbon%20Frame%20(52cm)%20for%20KSH%20145%2C000'">Contact Us</button>
+</div>
+<div class="product">
+  <img src="https://iili.io/FTN73Ja.md.jpg" alt="Momentum Road Bike">
+  <p><strong>QUICK SALE</strong></p>
+  <p>Category: Road Bike</p>
+  <p>Shimano Groupset</p>
+  <p>Aluminum Frame (Medium)</p>
+  <p>Brand: MOMENTUM</p>
+  <p class="price">KSH. 50,000</p>
+  <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20Momentum%20Road%20Bike%20for%20KSH%2050%2C000'">Contact Us</button>
+</div>
+<div class="product">
+  <img src="https://iili.io/FTN7fbR.md.jpg" alt="Merida Road Bike">
+  <p><strong>QUICK SALE</strong></p>
+  <p>Category: Road Bike</p>
+  <p>Shimano Groupset</p>
+  <p>Aluminum Frame (Medium)</p>
+  <p>Brand: MERIDA</p>
+  <p class="price">KSH. 40,000</p>
+  <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20Merida%20Road%20Bike%20for%20KSH%2040%2C000'">Contact Us</button>
+</div>
+
+
+    <div class="product">
+        <img src="https://iili.io/3Gbig6v.md.jpg" alt="Road Bike 1">
+        <p>Category: Road bike</p>
+        <p>Sqiar tapped bb type</p>
+          <p>Crank 50-34</p>
+          <p>8 speed group set</p>
+          <p>Aluminium frame</p>
+        <p>Brand: copenhagen</p>
+        <p class="price">KSH.30,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20Road%20Bike%201%20for%20roadbike%20 copenhagen%20 30,000'">Contact Us</button>
+      </div>
+      <div class="product">
+  <img src="https://iili.io/3Gbieu1.md.jpg" alt="Ozark Trail Gravel Bike">
+  <p>Category: Ozark Trail</p>
+  <p>Gravel Bike</p>
+  <p>Groupset: Shimano 2x8</p>
+  <p>Mechanical Disc Brake</p>
+  <p>Size: 53cm</p>
+  <p>Location: Nairobi CBD</p>
+  <p>Delivery Available (charges apply)</p>
+  <p class="price">KSH 43,000</p>
+  <button onclick="location.href='https://wa.me/+254725068264?text=Interested%20in%20Ozark%20Trail%20Gravel%20Bike%20(53cm)%20for%20KSH%2043,000'">Contact Us</button>
+</div>
+<div class="product">
+  <img src="https://scontent.fnbo17-1.fna.fbcdn.net/v/t39.30808-6/495587889_681330967826385_6946468888076173184_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGdB04N94abrCNFoMZmn6rhhr1dRS9ECsuGvV1FL0QKyz8oXr2mPy7D5HMLb65LThe9JatBWhv6QtRmr2sVmL9F&_nc_ohc=SgrsVV4PZksQ7kNvwE0CN1w&_nc_oc=AdnjUfJTpGtIpH2Mq6H7l7xr1T6CcUNFdalGQzDPZ9rRJ7Mvi5F9-dP1EDRoASp2l1k&_nc_zt=23&_nc_ht=scontent.fnbo17-1.fna&_nc_gid=PKsteMwU-3bYwoYYAddDXg&oh=00_AfIYW_jdRzwKPOstlQflVM7vnWaRJ5FNISkZ6P9WNyBfGg&oe=682D6FF3" 
+       alt="Betwin Road Bike">
+  <p>Category: Betwin</p>
+  <p>Road Bike</p>
+  <p>Groupset: Shimano Claris 3x8</p>
+  <p>Carbon Fork</p>
+  <p>Size: 54cm</p>
+  <p>Location: Nairobi</p>
+  <p>Delivery Available (charges apply)</p>
+  <p class="price">KSH 37,000</p>
+  <button onclick="location.href='https://wa.me/+254725068264?text=Interested%20in%20Betwin%20Road%20Bike%20(54cm)%20for%20KSH%2037,000'">Contact Us</button>
+</div>
+
+      <div class="product">
+        <img src="https://iili.io/3GbiVGj.md.jpg" alt="Road Bike 1">
+        <h3>Road Bike 1</h3>
+        <p>Category: Road</p>
+        <p>Aluminium frame</p>
+          <p>Crank size 50-34</p>
+          <P>8speed gear system </P>
+        <p>Brand: Giant</p>
+        <p class="price">KSH.30,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20roadbike%20aluminium frame%20Crank size 50-30%20 33,000'">Contact Us</button>
+      </div>
+  </section>
+
+  <!-- BMX Bikes Section -->
+  <div class="category-title" id="bmx-bikes">BMX Bikes</div>
+  <section class="products">
+    <div class="product">
+      <img src="https://iili.io/3MpqQcP.md.jpg" alt="BMX Bike 1">
+      <h3>BMX Bike</h3>
+      <p>Category: BMX</p>
+      <P>Single speed</P>
+      <p>Brand: POROBIKE</p>
+      <p class="price">KSH. 10,000</p>
+      <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20BMX%20probike%2010,000'">Contact Us</button>
+    </div>
+    <div class="product">
+        <img src="https://iili.io/3MpqiPV.md.jpg" alt="BMX Bike 1">
+        <h3>kid bike</h3>
+        <p>Category: BMX</p>
+        <p>Brand: 😊</p>
+        <p class="price">ksh. 6,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20KIDBIKE%20😊%206,500'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3MpqPMQ.md.jpg" alt="BMX Bike 1">
+        <h3>kid mountain bike</h3>
+        <p>Category: mtb</p>
+        <p>Brand: EMMELLE</p>
+        <p class="price">KSH. 10,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20kid mountain bike%20EMMELLE$20 10,000'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3Mpqrtj.md.jpg" alt="BMX Bike 1">
+        <h3>BMX Bike</h3>
+        <p>Category: mountain bike</p>
+        <p>Brand: B~TWIN</p>
+        <p class="price">ksh. 10,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20bmx bike%20B~ twin %2010,000'">Contact Us</button>
+      </div>
+    <div class="product">
+      <img src="https://iili.io/3Mpqn6B.md.jpg" alt="BMX Bike 2">
+      <h3>KID BIKE</h3>
+      <P>Size -12</P>
+      <p>Category: kidbike</p>
+      <p class="price">KSJ. 6,500</p>
+      <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20kidbike%20 65,000'">Contact Us</button>
+    </div>
+    <div class="product">
+      <img src="https://iili.io/3MpqeFS.md.jpg" alt="BMX Bike 2">
+      <h3>KID BIKE</h3>
+      <p>Category: BMX</p>
+      <p>Brand: 🙂</p>
+      <p class="price">KSH.6,500</p>
+      <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20kidbike 🙂%20 6,500'">Contact Us</button>
+    </div>
+  </section>
+
+  <!-- Bike Parts Section -->
+  <div class="category-title" id="bike-parts">Bike Parts</div>
+  <section class="products">
+    <div class="product">
+      <img src="https://iili.io/3GbZvJR.md.jpg" alt="Bike Part 1">
+      <h3>SPD pedals</h3>
+      <p>Category: Parts</p>
+      <p>Brand: Shimano</p>
+      <p class="price">KSH. 3,500</p>
+      <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SPD pedals'">Contact Us</button>
+    </div>
+    <div class="product">
+        <img src="https://iili.io/3GbZhWF.md.jpg" alt="Bike Part 1">
+        <h3>SPD Pedals</h3>
+        <p>Category: Parts</p>
+        <p>Brand: Shimano</p>
+        <p class="price">ksh. 3,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SPD pedals'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbZMOB.md.jpg" alt="Bike Part 1">
+        <h3>bike seat</h3>
+        <p>Category: seat</p>
+        <p>Brand: prologo</p>
+        <p class="price">ksh. 6,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20bike seat'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbZ0Ux.md.jpg" alt="Bike Part 1">
+        <h3>spd pedals</h3>
+        <p>Category: Parts</p>
+        <p>Brand: Shimano etc..</p>
+        <p class="price">3,500 each</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20spd pedals'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbZYiu.md.jpg" alt="Bike Part 1">
+        <h3>seat</h3>
+        <p>Category: Parts</p>
+        <p>Brand: prologo</p>
+        <p class="price">ksh. 6,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20seat'">Contact Us</button>
+      </div>
+    <div class="product">
+      <img src="https://iili.io/3GbZTR2.md.jpg" alt="Bike Part 2">
+      <h3>seat</h3>
+      <p>Category: Parts</p>
+      <p>Brand: prologo</p>
+      <p class="price">ksh. 6,500</p>
+      <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20seat'">Contact Us</button>
+    </div>
+    <div class="product">
+        <img src="https://iili.io/3GbZolf.md.jpg" alt="Bike Part 2">
+        <h3>seat</h3>
+        <p>Category: Parts</p>
+        <p>Brand: prologo</p>
+        <p class="price">ksh, 5,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20seat'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbQmPa.md.jpg" alt="Bike Part 2">
+        <h3>Pump</h3>
+        <p>Category: Parts</p>
+        <p>Brand: Handife</p>
+        <p class="price">ksh. 2,700</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20pump'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbQLAB.md.jpg" alt="Bike Part 2">
+        <h3>seat</h3>
+        <p>Category: Parts</p>
+        <p>Brand: prologo</p>
+        <p class="price">ksh. 6,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20seat'">Contact Us</button>>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbQ4Fj.md.jpg" alt="Bike Part 2">
+        <h3>Gear</h3>
+        <p>Category: Parts</p>
+        <p>8 speed</p>
+        <p>Brand: new</p>
+        <p class="price">ksh. 3,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Gear'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbQuCg.md.jpg" alt="Bike Part 2">
+        <h3>Seats</h3>
+        <p>Category: Parts</p>
+        <p>Brand: SRAM</p>
+        <p class="price">ksh. 6,500 each</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Seats'">Contact Us</button>
+      </div>
+
+      <div class="product">
+        <img src="https://iili.io/3GbL4pI.md.jpg" alt="Bike Part 2">
+        <h3>SPD</h3>
+        <p>Category: Parts</p>
+        <p>Brand: Shimano</p>
+        <p class="price">ksh. 3,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SPD'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3Gbsbb1.md.jpg" alt="Bike Part 2">
+        <h3>Fork</h3>
+        <p>size -29</p>
+        <p>Category: Parts</p>
+        <p>Brand: forks</p>
+        <p class="price">ksh. 16,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20fork'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3GbsvJ2.md.jpg" alt="Bike Part 2">
+        <h3>water bottles</h3>
+        <p>Category: kits</p>
+        <p>Brand: ____</p>
+        <p class="price">ksh. 500 each</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20 water bottles'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0S15u.md.jpg" alt="Bike Part 2">
+        <h3>lights</h3>
+        <p>Category: Parts</p>
+        <p class="price">KSH.1100</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Lights'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SEOb.md.jpg" alt="Bike Part 2">
+        <h3>TUBES</h3>
+        <p>Category: Parts</p>
+        <p class="price">ksh. 800</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20TUBES'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SGbj.md.jpg" alt="Bike Part 2">
+        <h3>speedometer</h3>
+        <p>Category: Parts</p>
+        <p>Brand: cyclami</p>
+        <p class="price">ksh.1300</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20speedometer'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SXsV.md.jpg" alt="Bike Part 2">
+        <h3>Shades</h3>
+        <p>Category: kits</p>
+        <p>Brand:____</p>
+        <p class="price">Ksh. 600</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SHades'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0Sw0P.md.jpg" alt="Bike Part 2">
+        <h3>shifters only -ksh 8,000</h3>
+        <h3>handle bar ksh, 2,000</h3>
+        <h3>speed - 8 by 3</h3>
+        <p>Category: road bike handle bars</p>
+        <p>Brand: ___</p>
+        <p class="price">ksh. 10,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20shifters only  -8000'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SNg1.md.jpg" alt="Bike Part 2">
+        <h3>SPD shoes</h3>
+        <p>Category: spd shoes</p>
+        <p>Brand:___</p>
+        <p class="price">Ksh. 2,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SPD shoes'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0Svea.md.jpg" alt="Bike Part 2">
+        <h3>SPD</h3>
+        <p>Category: SPD shoes</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 2,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SPD'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SedF.md.jpg" alt="Bike Part 2">
+        <h3>SPD shoes</h3>
+        <p>Category: spd shoes</p>
+        <p>Brand: SRAM</p>
+        <p class="price">ksh. 2,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SPD shoes'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0Sk5g.md.jpg" alt="Bike Part 2">
+        <h3>SPD</h3>
+        <p>Category: SPD shoes</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 2,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20SPD'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SgXR.md.jpg" alt="Bike Part 2">
+        <h3>Crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand: SD</p>
+        <p class="price">ksh. 15,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20crank'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0S8mJ.md.jpg" alt="Bike Part 2">
+        <h3>crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand: ULTEGRA</p>
+        <p class="price">ksh. 16,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20crank'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SUzv.md.jpg" alt="Bike Part 2">
+        <h3>Crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 15,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20crank'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SP1I.md.jpg" alt="Bike Part 2">
+        <h3>Crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand:___</p>
+        <p class="price">ksh. 15,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20crank'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0S6qN.md.jpg" alt="Bike Part 2">
+        <h3>Crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 5,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Crank'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SQ7n.md.jpg" alt="Bike Part 2">
+        <h3>Crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 8,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20crank__'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0Sigt.md.jpg" alt="Bike Part 2">
+        <h3>crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand: shimano</p>
+        <p class="price">ksh. 8,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Crank shimano'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SZes.md.jpg" alt="Bike Part 2">
+        <h3>Crank</h3>
+        <p>Category: MICS()TECH</p>
+        <p>Brand:____</p>
+        <p class="price">KSH. 5,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20crank MICS()TECH'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SdOJ.md.jpg" alt="Bike Part 2">
+        <h3>Crank</h3>
+        <p>Category: Parts</p>
+        <p>Brand:___</p>
+        <p class="price">3,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Crank'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0S2Dv.md.jpg" alt="Bike Part 2">
+        <h3>shifters/brakes handles</h3>
+        <p>Category: Parts</p>
+        <p>Brand: multiple</p>
+        <p class="price">varying</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20shifters/brakes handles'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SClt.md.jpg" alt="Bike Part 2">
+        <h3>Chains</h3>
+        <p>Category: Parts</p>
+        <p>7 speeds</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 700 each</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20chain'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SIOG.md.jpg" alt="Bike Part 2">
+        <h3>helmet</h3>
+        <p>Category: kits</p>
+        <p>mountain bike</p>
+        <p>Brand:___</p>
+        <p class="price">ksh. 3500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20Helmet'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0STbf.md.jpg" alt="Bike Part 2">
+        <h3>hydraulic brake</h3>
+        <p>Category: parts</p>
+        <p>Brand: TEKTRO</p>
+        <p class="price">ksh. 8,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20hydraulic brake'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SRWl.md.jpg" alt="Bike Part 2">
+        <h3>TUbes</h3>
+        <p>Category: Parts</p>
+        <p>Brand: HARTEX</p>
+        <p class="price">ksh. 350</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20tubes'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0S5s2.md.jpg" alt="Bike Part 2">
+        <h3>cassate</h3>
+        <p>Category: Parts</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 1,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20cassate'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SYfS.md.jpg" alt="Bike Part 2">
+        <h3>HUB</h3>
+        <p>Category: Parts</p>
+        <p>Brand:___</p>
+        <p class="price">ksh. 2,000</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20hub'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0Sa07.md.jpg" alt="Bike Part 2">
+        <h3>bottom bracket</h3>
+        <p>Category: Parts</p>
+        <p>Brand:____</p>
+        <p class="price">ksh. 2,000 (ex uk)</p>
+        <p class="price">ksh. 1,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20bottom bracket'">Contact Us</button>
+      </div>
+      <div class="product">
+        <img src="https://iili.io/3V0SzRs.md.jpg" alt="Bike Part 2">
+        <h3>HUB</h3>
+        <p>Category: Parts</p>
+        <p>Brand:___</p>
+        <P>NYUKI</P>
+        <p class="price">ksh. 8,500</p>
+        <button onclick="location.href='https://wa.me/+254790617211?text=I\'m%20interested%20in%20HUB'">Contact Us</button>
+      </div>
+
+  </section>
+  <style>
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+      }
+      footer p {
+        margin: 0.5rem 0;
+      }
+      footer a {
+        color: #25D366;
+        text-decoration: none;
+      }
+  </style>
+  <footer>
+    <p>&copy; 2025 Bicycle Shop. All rights reserved.</p>
+    <p>Contact us via <a href="https://wa.me/+254790617211" target="_blank">WhatsApp</a> or email us at <a href="spencemiles0@gmail.com">spencemiles0@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

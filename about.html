@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cycle Edge | Become the Cyclist You're Meant to Be</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00a8ff;
+      --secondary: #0097e6;
+      --accent: #ff6b6b;
+      --dark: #2f3640;
+      --light: #f5f6fa;
+      --success: #4cd137;
+      --warning: #fbc531;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      padding: 0.5rem 0;
+      background: rgba(0, 168, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 2rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      margin-left: 1rem;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    /* About Section */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .about-text {
+      flex: 1;
+      animation: fadeInLeft 1s ease;
+    }
+
+    .about-image {
+      flex: 1;
+      animation: fadeInRight 1s ease;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Features Section */
+    .features {
+      background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
+      padding: 6rem 2rem;
+    }
+
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .feature-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-card:nth-child(1) { transition-delay: 0.1s; }
+    .feature-card:nth-child(2) { transition-delay: 0.2s; }
+    .feature-card:nth-child(3) { transition-delay: 0.3s; }
+    .feature-card:nth-child(4) { transition-delay: 0.4s; }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Programs Section */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .program-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .program-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .program-card:nth-child(1) { transition-delay: 0.1s; }
+    .program-card:nth-child(2) { transition-delay: 0.2s; }
+    .program-card:nth-child(3) { transition-delay: 0.3s; }
+
+    .program-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .program-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .program-card:hover .program-image img {
+      transform: scale(1.1);
+    }
+
+    .program-content {
+      padding: 1.5rem;
+    }
+
+    .program-content h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .program-content .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .program-content .btn {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* Affiliate Section */
+    .affiliate {
+      background: linear-gradient(135deg, var(--dark), #1e272e);
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .affiliate-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .affiliate h2 {
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .affiliate p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .affiliate-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .affiliate-logo {
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .affiliate-logo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .affiliate-logo img {
+      height: 40px;
+      width: auto;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .affiliate-logo:hover img {
+      filter: grayscale(0);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
+      padding: 6rem 2rem;
+    }
+
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-slider {
+      position: relative;
+      overflow: hidden;
+      padding: 2rem 0;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .testimonial-card {
+      min-width: 100%;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    .testimonial-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .testimonial-content::before {
+      content: '\201C';
+      font-size: 5rem;
+      color: var(--primary);
+      opacity: 0.2;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-info h4 {
+      margin-bottom: 0.2rem;
+      color: var(--primary);
+    }
+
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slider-dot.active {
+      background: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .team-member.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .team-member:nth-child(1) { transition-delay: 0.1s; }
+    .team-member:nth-child(2) { transition-delay: 0.2s; }
+    .team-member:nth-child(3) { transition-delay: 0.3s; }
+    .team-member:nth-child(4) { transition-delay: 0.4s; }
+
+    .member-image {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .team-member:hover .member-image img {
+      transform: scale(1.1);
+    }
+
+    .member-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .member-info h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .member-info p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: var(--dark);
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .cta-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .cta-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.8rem 1rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .cta-form .btn {
+      padding: 0.8rem 2.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-col h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-col ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--accent);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-text, .about-image {
+        flex: none;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+      }
+      
+      nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 2rem;
+        transition: all 0.5s ease;
+      }
+      
+      nav ul.active {
+        left: 0;
+      }
+      
+      nav ul li {
+        margin: 1rem 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 0.6rem 1.5rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section {
+        padding: 4rem 1rem;
+      }
+      
+      .features, .testimonials {
+        padding: 4rem 1rem;
+      }
+      
+      .cta-form {
+        flex-direction: column;
+      }
+      
+      .cta-form input, .cta-form .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-bicycle"></i>
+        <span>Cycle Edge</span>
+      </div>
+      <nav>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">shop</a></li>
+          <li><a href="repairs.html">repairs</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Find Your Cycling Edge</h1>
+      <p>Join our community of passionate cyclists and transform your riding experience with expert coaching, top-tier equipment, and a supportive community.</p>
+      <div>
+        <a href="#programs" class="btn">Get Started</a>
+        <a href="#about" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="section-title">
+      <h2>About Cycle Edge</h2>
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Your Journey Starts Here</h3>
+        <p>At Cycle Edge, we believe everyone has the potential to become an exceptional cyclist. Founded in 2015, we've helped thousands of riders discover their passion for cycling and push their limits.</p>
+        <p>Our state-of-the-art facility combines cutting-edge technology with expert coaching to help you achieve your cycling goals, whether you're a complete beginner or an experienced racer.</p>
+        <p>We're more than just a bike shop - we're a community of cycling enthusiasts dedicated to helping you find your edge.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cycle Edge Facility">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="features-container">
+      <div class="section-title">
+        <h2>Why Choose Cycle Edge</h2>
+      </div>
+      <div class="features-grid" id="featuresGrid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h3>Expert Coaching</h3>
+          <p>Our certified coaches have trained Olympic athletes and beginners alike with personalized training plans.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>Cutting-Edge Tech</h3>
+          <p>Access to the latest in bike fitting technology, performance tracking, and recovery tools.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Vibrant Community</h3>
+          <p>Join group rides, workshops, and social events with fellow cycling enthusiasts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Holistic Approach</h3>
+          <p>We focus on nutrition, recovery, and mental training alongside your cycling development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+ <section class="section" id="programs">
+  <div class="section-title">
+    <h2>Our Cycling Programs</h2>
+    <p>Start your cycling journey with affordable and practical programs designed for Kenyan riders.</p>
+  </div>
+  <div class="programs-grid" id="programsGrid">
+    
+    <!-- Beginner -->
+    <div class="program-card">
+      <div class="program-image">
+        <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Beginner Program">
+      </div>
+      <div class="program-content">
+        <h3>Beginner Rider Program</h3>
+        <p>Ideal for new cyclists. Learn road safety, basic bike handling, and maintenance in this 4-week Nairobi-based training.</p>
+        <div class="price">KSH 500</div>
+        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Beginner%20Rider%20Program%20(KSH%20 500)" class="btn">Enroll via WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Intermediate -->
+    <div class="program-card">
+      <div class="program-image">
+        <img src="https://www.cyclinguk.org/sites/default/files/styles/xxs_cuk_16_9_hero_max_575_98px/public/roofowler_rz95160_0.jpg?h=8c1344d8&itok=yu5xBFI7" alt="Intermediate Program">
+      </div>
+      <div class="program-content">
+        <h3>Fitness & Endurance Program</h3>
+        <p>Build your stamina and strength for long-distance cycling. Includes weekend rides and progress tracking over 6 weeks.</p>
+        <div class="price">KSH1,000</div>
+        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Fitness%20%26%20Endurance%20Program%20(KSH%201000)" class="btn">Join via WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Advanced -->
+    <div class="program-card">
+      <div class="program-image">
+        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Advanced Program">
+      </div>
+      <div class="program-content">
+        <h3>Elite Race Prep Program</h3>
+        <p>Designed for competitive cyclists. Includes performance coaching, race strategy, and nutrition guidance for 8 weeks.</p>
+        <div class="price">KSH 1,500</div>
+        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Elite%20Race%20Prep%20Program%20(KSH%201,500)" class="btn">Apply on WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Affiliate Section -->
+ <section class="affiliate">
+  <div class="affiliate-container">
+    <h2>Earn with Our Affiliate Program</h2>
+    <p>Affiliate marketing is a simple way to earn money by recommending cycling products you trust. When someone clicks your unique link and makes a purchase, you get a commission — no inventory, no hassle.</p>
+    <p>Whether you're a cycling fan, blogger, or just love sharing great deals, our affiliate program lets you earn while helping others get quality gear.</p>
+    
+    <div class="affiliate-logos">
+      <div class="affiliate-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Shimano_logo.svg/2560px-Shimano_logo.svg.png" alt="Shimano">
+      </div>
+      <div class="affiliate-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Specialized_logo.svg/2560px-Specialized_logo.svg.png" alt="Specialized">
+      </div>
+      <div class="affiliate-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Garmin_logo.svg/2560px-Garmin_logo.svg.png" alt="Garmin">
+      </div>
+      <div class="affiliate-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Cannondale_Logo.svg/1200px-Cannondale_Logo.svg.png" alt="Cannondale">
+      </div>
+    </div>
+
+    <a href="https://wa.me/254790617211?text=I'm%20interested%20in%20joining%20your%20affiliate%20program" class="cta-button">Join Our Affiliate Program</a>
+  </div>
+</section>
+<style>
+    .cta-button {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+</style>
+
+  <!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-container">
+    <div class="section-title">
+      <h2>Success Stories</h2>
+    </div>
+    <div class="testimonial-slider">
+      <div class="testimonial-track" id="testimonialTrack">
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"I bought my first road bike from Cycle Edge and joined their weekend rides. In just a few weeks, I built stamina and made amazing cycling friends from all over Nairobi."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Kevin M.">
+              </div>
+              <div class="author-info">
+                <h4>Kevin M.</h4>
+                <p>Nairobi Rider</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"I used to cycle alone in Eldoret, but after connecting with Cycle Edge, I joined group rides and received great advice on gear and training. I now cycle 100km+ every weekend!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Mercy W.">
+              </div>
+              <div class="author-info">
+                <h4>Mercy W.</h4>
+                <p>Fitness Enthusiast - Eldoret</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"Cycle Edge helped me get my first race-ready bike. I trained hard with their support and recently competed in a local race in Kisumu. I feel more confident and motivated."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="Brian O.">
+              </div>
+              <div class="author-info">
+                <h4>Brian O.</h4>
+                <p>Amateur Racer - Kisumu</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slider-nav">
+        <div class="slider-dot active" data-index="0"></div>
+        <div class="slider-dot" data-index="1"></div>
+        <div class="slider-dot" data-index="2"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Team Section -->
+  <section class="section" id="team">
+    <div class="section-title">
+      <h2>Meet The Team</h2>
+    </div>
+    <div class="team-grid" id="teamGrid">
+      <div class="team-member">
+        <div class="member-image">
+          <img src="https://iili.io/3WeHDSR.md.jpg" alt="Sarah Chen">
+        </div>
+        <div class="member-info">
+          <h3>Gerald S.</h3>
+          <p>Performance Specialist</p>
+          <p>Professional cyclist with 10+ years cycling and coaching experience</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img src="https://iili.io/3WOQXTb.md.jpg" alt="Jamal Williams">
+        </div>
+        <div class="member-info">
+          <h3>Edward M.</h3>
+          <p>Bike Fit Expert</p>
+          <p>Professional cyclist with 10+ years Cycling coaching experience</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="contact">
+    <div class="cta-container">
+      <h2>Ready to Find Your Edge?</h2>
+      <p>Join our community of cyclists and start your journey today. Sign up for our newsletter to receive training tips, exclusive offers, and event invitations.</p>
+      <form class="cta-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Cycle Edge</h3>
+        <p>Helping cyclists of all levels find their edge since 2015.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Programs</h3>
+        <ul>
+          <li><a href="#">Foundations Program</a></li>
+          <li><a href="#">Performance Program</a></li>
+          <li><a href="#">Elite Racing Program</a></li>
+          <li><a href="#">Private Coaching</a></li>
+          <li><a href="#">Workshops</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> manyanja road</li>
+          <li><i class="fas fa-phone"></i> +254790617211</li>
+          <li><i class="fas fa-envelope"></i>spencemiles0@gmail.com</li>
+          <li><i class="fas fa-clock"></i> Mon-Fri: 9am-7pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Cycle Edge. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      <p class="affiliate-disclaimer">We are a participant in various affiliate programs which means we may earn commissions on qualifying purchases made through links on our site.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Header Scroll Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth Scrolling for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Testimonial Slider
+    const testimonialTrack = document.getElementById('testimonialTrack');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentIndex = 0;
+
+    function updateSlider(index) {
+      testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
+      
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+      
+      currentIndex = index;
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        updateSlider(parseInt(dot.dataset.index));
+      });
+    });
+
+    // Auto-advance testimonials
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % dots.length;
+      updateSlider(currentIndex);
+    }, 5000);
+
+    // Intersection Observer for Animations
+    const animateOnScroll = (elements, className) => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(className);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach(element => observer.observe(element));
+    };
+
+    // Animate feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    animateOnScroll(featureCards, 'animate');
+
+    // Animate program cards
+    const programCards = document.querySelectorAll('.program-card');
+    animateOnScroll(programCards, 'animate');
+
+    // Animate team members
+    const teamMembers = document.querySelectorAll('.team-member');
+    animateOnScroll(teamMembers, 'animate');
+  </script>
+</body>
+</html>

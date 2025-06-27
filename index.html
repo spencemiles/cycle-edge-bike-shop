@@ -794,251 +794,544 @@
     <div class="overlay"></div>
     
     <!-- Hero Section -->
-<section class="bike-hero">
-    <!-- CSS Styles -->
-    <style>
-        .bike-hero {
-            --dark-bg: #121212;
-            --accent-color: #3a86ff;
-            --text-light: #ffffff;
-            --text-muted: #aaaaaa;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            padding: 2rem 1rem;
-        }
+<section class="jumia-style-section">
+  <!-- CSS Styles -->
+  <style>
+    .jumia-style-section {
+      --primary-color: #f68b1e;
+      --secondary-color: #ff9900;
+      --dark-color: #333;
+      --light-color: #fff;
+      --gray-color: #f5f5f5;
+      --text-dark: #333;
+      --text-light: #fff;
+      --text-gray: #666;
+      font-family: 'Roboto', Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px;
+    }
 
-        .bike-hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
+    /* Header Styles */
+    .jumia-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      margin-bottom: 15px;
+    }
 
-        .bike-hero-content {
-            text-align: center;
-            padding: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards 0.3s;
-            order: 2;
-        }
+    .jumia-logo {
+      height: 40px;
+    }
 
-        .bike-hero-content h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
+    .jumia-search {
+      flex-grow: 1;
+      margin: 0 20px;
+      position: relative;
+    }
 
-        .bike-hero-content p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
+    .jumia-search input {
+      width: 100%;
+      padding: 12px 20px;
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      font-size: 14px;
+    }
 
-        .bike-hero-btns {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    .jumia-search button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 50px;
+      background: var(--primary-color);
+      border: none;
+      border-radius: 0 4px 4px 0;
+      color: var(--light-color);
+      cursor: pointer;
+    }
 
-        .bike-btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            transform: scale(1);
-        }
+    .jumia-nav {
+      display: flex;
+      gap: 15px;
+    }
 
-        .bike-btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-        }
+    .jumia-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 12px;
+    }
 
-        .bike-btn:hover {
-            opacity: 0.9;
-            transform: scale(1.05);
-        }
+    .jumia-nav-icon {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
 
-        /* Carousel styles */
-        .bike-splide {
-            padding: 1rem 0;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-        }
+    /* Main Slider */
+    .jumia-main-slider {
+      position: relative;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-        .bike-splide__slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .jumia-slide {
+      position: relative;
+      height: 300px;
+    }
 
-        .bike-splide__slide a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
+    .jumia-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .bike-splide__slide img {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.5s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .jumia-slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: var(--light-color);
+      padding: 20px;
+    }
 
-        .bike-splide__slide:hover img {
-            transform: scale(1.03);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
+    .jumia-slide-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
 
-        .slide-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 0 0 8px 8px;
-        }
+    .jumia-slide-subtitle {
+      font-size: 16px;
+    }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .jumia-slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+      z-index: 2;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .jumia-slider-btn {
+      background: rgba(255,255,255,0.5);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
 
-        /* Desktop layout */
-        @media (min-width: 769px) {
-            .bike-hero-container {
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .bike-hero-content {
-                flex: 0 0 40%;
-                order: 0;
-                padding: 2rem;
-            }
-            
-            .bike-splide {
-                flex: 1;
-            }
-            
-            .bike-splide__slide img {
-                max-height: 400px;
-            }
-        }
-    </style>
+    .jumia-slider-btn:hover {
+      background: rgba(255,255,255,0.8);
+    }
 
-    <!-- HTML Content -->
-    <div class="bike-hero-container">
-        <!-- Combined Slideshow -->
-        <div class="bike-splide" id="bike-combined-carousel">
-            <div class="bike-splide__track">
-                <ul class="bike-splide__list">
-                    <!-- Bike Slides -->
-                    <li class="bike-splide__slide">
-                        <a href="/bikes/road-bike-special">
-                            <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Road Bike Special Offer">
-                            <div class="slide-caption">Road Bike Special</div>
-                        </a>
-                    </li>
-                    <li class="bike-splide__slide">
-                        <a href="/bikes/mountain-bike-deal">
-                            <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mountain Bike Deal">
-                            <div class="slide-caption">Mountain Bike Deal</div>
-                        </a>
-                    </li>
-                    <li class="bike-splide__slide">
-                        <a href="/bikes/commuter-bike-sale">
-                            <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Commuter Bike Sale">
-                            <div class="slide-caption">Commuter Bike Sale</div>
-                        </a>
-                    </li>
-                    <!-- Equipment Slides -->
-                    <li class="bike-splide__slide">
-                        <a href="/equipment/premium-helmets">
-                            <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Premium Bike Helmets">
-                            <div class="slide-caption">Premium Helmets</div>
-                        </a>
-                    </li>
-                    <li class="bike-splide__slide">
-                        <a href="/equipment/cycling-jerseys">
-                            <img src="https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cycling Jerseys">
-                            <div class="slide-caption">Cycling Jerseys</div>
-                        </a>
-                    </li>
-                    <li class="bike-splide__slide">
-                        <a href="/equipment/bike-lights">
-                            <img src="https://images.unsplash.com/photo-1593764592433-1b3382c615b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bike Lights">
-                            <div class="slide-caption">Bike Lights</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    /* Category Grid */
+    .jumia-categories {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
 
-        <!-- Center Content -->
-        <div class="bike-hero-content">
-            <h1>Ride Further, Ride Stronger</h1>
-            <p>Join the Cycling Edge community for premium bikes, expert training, and a network of cycling enthusiasts. Whether you're a beginner or a pro, we've got what you need to elevate your ride.</p>
-            <div class="bike-hero-btns">
-                <a href="shop.html" class="bike-btn">Explore Bikes</a>
-                <a href="https://spencemiles.github.io/Market-and-earn-bikeshop/" class="bike-btn bike-btn-outline">Affilliate</a>
-            </div>
-        </div>
+    .jumia-category {
+      background: var(--light-color);
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .jumia-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .jumia-category img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .jumia-category-title {
+      font-size: 12px;
+      color: var(--text-dark);
+    }
+
+    /* Flash Sale */
+    .jumia-flash-sale {
+      background: var(--light-color);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .jumia-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .jumia-section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .jumia-section-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .jumia-products {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+    }
+
+    .jumia-product {
+      background: var(--gray-color);
+      border-radius: 8px;
+      padding: 10px;
+      transition: all 0.3s;
+    }
+
+    .jumia-product:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .jumia-product-img {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .jumia-product img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .jumia-product-title {
+      font-size: 12px;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .jumia-product-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .jumia-product-old-price {
+      font-size: 10px;
+      color: var(--text-gray);
+      text-decoration: line-through;
+      margin-left: 5px;
+    }
+
+    .jumia-product-discount {
+      background: var(--primary-color);
+      color: var(--light-color);
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 3px;
+      margin-left: 5px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .animated {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .slide-animated {
+      animation: slideIn 0.5s ease-out;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .jumia-categories {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .jumia-products {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .jumia-header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .jumia-search {
+        margin: 10px 0;
+        width: 100%;
+      }
+      
+      .jumia-nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .jumia-categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .jumia-products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .jumia-slide {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .jumia-categories {
+        grid-template-columns: 1fr;
+      }
+      
+      .jumia-products {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- HTML Content -->
+  <div class="jumia-header">
+    <img src="https://www.jumia.co.ke/assets_he/images/jumia-logo.svg" alt="Jumia" class="jumia-logo">
+    
+    <div class="jumia-search">
+      <input type="text" placeholder="Search products, brands and categories...">
+      <button>🔍</button>
     </div>
+    
+    <div class="jumia-nav">
+      <a href="#" class="jumia-nav-item">
+        <span class="jumia-nav-icon">👤</span>
+        <span>Account</span>
+      </a>
+      <a href="#" class="jumia-nav-item">
+        <span class="jumia-nav-icon">❤️</span>
+        <span>Wishlist</span>
+      </a>
+      <a href="#" class="jumia-nav-item">
+        <span class="jumia-nav-icon">🛒</span>
+        <span>Cart</span>
+      </a>
+    </div>
+  </div>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize combined carousel
-            new Splide('#bike-combined-carousel', {
-                type: 'loop',
-                perPage: 1,
-                autoplay: true,
-                interval: 4000,
-                pauseOnHover: true,
-                arrows: true,
-                pagination: false,
-                breakpoints: {
-                    768: {
-                        arrows: false,
-                        pagination: true
-                    }
-                }
-            }).mount();
+  <!-- Main Slider -->
+  <div class="jumia-main-slider animated">
+    <div class="jumia-slide">
+      <img src="https://ke.jumia.is/cms/2023/W25/KE_HP_Slider_1242x450_1.jpg" alt="Slide 1">
+      <div class="jumia-slide-content">
+        <h2 class="jumia-slide-title">Supermarket Deals</h2>
+        <p class="jumia-slide-subtitle">Up to 50% off on groceries</p>
+      </div>
+    </div>
+    
+    <div class="jumia-slider-nav">
+      <button class="jumia-slider-btn">❮</button>
+      <button class="jumia-slider-btn">❯</button>
+    </div>
+  </div>
+
+  <!-- Categories -->
+  <div class="jumia-categories">
+    <div class="jumia-category slide-animated" style="animation-delay: 0.1s;">
+      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Smartphones.png" alt="Phones">
+      <div class="jumia-category-title">Phones & Tablets</div>
+    </div>
+    <div class="jumia-category slide-animated" style="animation-delay: 0.2s;">
+      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Electronics.png" alt="Electronics">
+      <div class="jumia-category-title">Electronics</div>
+    </div>
+    <div class="jumia-category slide-animated" style="animation-delay: 0.3s;">
+      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Fashion.png" alt="Fashion">
+      <div class="jumia-category-title">Fashion</div>
+    </div>
+    <div class="jumia-category slide-animated" style="animation-delay: 0.4s;">
+      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Computing.png" alt="Computing">
+      <div class="jumia-category-title">Computing</div>
+    </div>
+    <div class="jumia-category slide-animated" style="animation-delay: 0.5s;">
+      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Supermarket.png" alt="Supermarket">
+      <div class="jumia-category-title">Supermarket</div>
+    </div>
+  </div>
+
+  <!-- Flash Sale -->
+  <div class="jumia-flash-sale slide-animated">
+    <div class="jumia-section-header">
+      <h3 class="jumia-section-title">Flash Sale ⚡</h3>
+      <a href="#" class="jumia-section-link">See All</a>
+    </div>
+    
+    <div class="jumia-products">
+      <div class="jumia-product">
+        <div class="jumia-product-img">
+          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/18/847944/1.jpg" alt="Product 1">
+        </div>
+        <h4 class="jumia-product-title">Samsung Galaxy A04 64GB 4GB RAM - Black</h4>
+        <div>
+          <span class="jumia-product-price">KSh 12,999</span>
+          <span class="jumia-product-old-price">KSh 15,999</span>
+          <span class="jumia-product-discount">-19%</span>
+        </div>
+      </div>
+      
+      <div class="jumia-product">
+        <div class="jumia-product-img">
+          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/39/767804/1.jpg" alt="Product 2">
+        </div>
+        <h4 class="jumia-product-title">Tecno Spark 10 Pro 256GB 8GB RAM - Starry Black</h4>
+        <div>
+          <span class="jumia-product-price">KSh 22,999</span>
+          <span class="jumia-product-old-price">KSh 25,999</span>
+          <span class="jumia-product-discount">-12%</span>
+        </div>
+      </div>
+      
+      <div class="jumia-product">
+        <div class="jumia-product-img">
+          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/03/847944/1.jpg" alt="Product 3">
+        </div>
+        <h4 class="jumia-product-title">Infinix Hot 30 Play 64GB 4GB RAM - Aurora Blue</h4>
+        <div>
+          <span class="jumia-product-price">KSh 13,999</span>
+          <span class="jumia-product-old-price">KSh 16,999</span>
+          <span class="jumia-product-discount">-18%</span>
+        </div>
+      </div>
+      
+      <div class="jumia-product">
+        <div class="jumia-product-img">
+          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/85/847944/1.jpg" alt="Product 4">
+        </div>
+        <h4 class="jumia-product-title">Oraimo 10000mAh Power Bank - Black</h4>
+        <div>
+          <span class="jumia-product-price">KSh 1,999</span>
+          <span class="jumia-product-old-price">KSh 2,499</span>
+          <span class="jumia-product-discount">-20%</span>
+        </div>
+      </div>
+      
+      <div class="jumia-product">
+        <div class="jumia-product-img">
+          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/12/847944/1.jpg" alt="Product 5">
+        </div>
+        <h4 class="jumia-product-title">Nivea Men Dark Spot Reduction Cream 50ml</h4>
+        <div>
+          <span class="jumia-product-price">KSh 499</span>
+          <span class="jumia-product-old-price">KSh 599</span>
+          <span class="jumia-product-discount">-17%</span>
+        </div>
+      </div>
+      
+      <div class="jumia-product">
+        <div class="jumia-product-img">
+          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/47/847944/1.jpg" alt="Product 6">
+        </div>
+        <h4 class="jumia-product-title">Adidas Unisex Backpack - Black</h4>
+        <div>
+          <span class="jumia-product-price">KSh 2,499</span>
+          <span class="jumia-product-old-price">KSh 3,999</span>
+          <span class="jumia-product-discount">-38%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simple slider functionality
+      const slides = document.querySelectorAll('.jumia-slide');
+      const prevBtn = document.querySelector('.jumia-slider-btn:first-child');
+      const nextBtn = document.querySelector('.jumia-slider-btn:last-child');
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.display = i === index ? 'block' : 'none';
         });
-    </script>
+      }
+      
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+      
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+      
+      // Initialize slider
+      showSlide(0);
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+      
+      // Auto slide
+      setInterval(nextSlide, 5000);
+      
+      // Animation on scroll
+      const animatedElements = document.querySelectorAll('.slide-animated');
+      
+      function checkScroll() {
+        animatedElements.forEach(el => {
+          const elTop = el.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elTop < windowHeight - 100) {
+            el.style.opacity = 1;
+            el.style.transform = 'translateY(0)';
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', checkScroll);
+      window.addEventListener('load', checkScroll);
+    });
+  </script>
 </section>
     <!-- Features Section -->
     <section class="features">

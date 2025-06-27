@@ -763,27 +763,6 @@
                     </ul>
                 </nav>
                 
-                <a href="https://spencemiles.github.io/Market-and-earn-bikeshop/"
-   target="_blank"
-   style="
-     display: inline-block;
-     padding: 12px 25px;
-     background: linear-gradient(135deg, #28a745, #218838);
-     color: white;
-     font-size: 16px;
-     font-weight: bold;
-     border-radius: 30px;
-     text-decoration: none;
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-     transition: all 0.3s ease;
-   "
-   onmouseover="this.style.background='linear-gradient(135deg, #1e7e34, #155724)'; this.style.transform='scale(1.05)'"
-   onmouseout="this.style.background='linear-gradient(135deg, #28a745, #218838)'; this.style.transform='scale(1)'"
->
-  Become an Affiliate
-</a>
-
-                
                 <div class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -832,35 +811,28 @@
         .bike-hero-container {
             max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .bike-hero-columns {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             gap: 2rem;
-            align-items: center;
         }
 
-        .bike-hero-column {
-            flex: 1;
-        }
-
-        .bike-hero-heading {
+        .bike-hero-content {
             text-align: center;
-            padding: 2rem;
+            padding: 1rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease forwards 0.3s;
+            order: 2;
         }
 
-        .bike-hero-heading h1 {
+        .bike-hero-content h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
-        .bike-hero-heading p {
+        .bike-hero-content p {
             font-size: 1.1rem;
             color: var(--text-muted);
             margin-bottom: 2rem;
@@ -904,14 +876,6 @@
             animation: fadeIn 0.8s ease forwards;
         }
 
-        .bike-splide:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .bike-splide:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
         .bike-splide__slide {
             display: flex;
             justify-content: center;
@@ -922,12 +886,13 @@
             display: block;
             width: 100%;
             height: 100%;
+            position: relative;
         }
 
         .bike-splide__slide img {
             width: 100%;
             height: auto;
-            max-height: 400px;
+            max-height: 500px;
             object-fit: cover;
             border-radius: 8px;
             transition: transform 0.5s ease, box-shadow 0.3s ease;
@@ -937,6 +902,20 @@
         .bike-splide__slide:hover img {
             transform: scale(1.03);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 0 0 8px 8px;
         }
 
         /* Animations */
@@ -956,100 +935,84 @@
             }
         }
 
-        /* Mobile layout */
-        @media (max-width: 768px) {
-            .bike-hero-columns {
-                flex-direction: column;
+        /* Desktop layout */
+        @media (min-width: 769px) {
+            .bike-hero-container {
+                flex-direction: row;
+                align-items: center;
             }
-
-            .bike-hero-heading {
-                order: 2;
-                padding: 1rem 0;
-                animation: none;
-                opacity: 1;
-                transform: none;
+            
+            .bike-hero-content {
+                flex: 0 0 40%;
+                order: 0;
+                padding: 2rem;
             }
-
-            .bike-hero-heading h1 {
-                font-size: 2rem;
-            }
-
-            .bike-hero-column {
-                width: 100%;
-            }
-
-            .bike-splide__slide img {
-                max-height: 300px;
-            }
-
+            
             .bike-splide {
-                animation: none;
-                opacity: 1;
+                flex: 1;
+            }
+            
+            .bike-splide__slide img {
+                max-height: 400px;
             }
         }
     </style>
 
     <!-- HTML Content -->
     <div class="bike-hero-container">
-        <div class="bike-hero-columns">
-            <!-- Left Column - Bike Offers Carousel -->
-            <div class="bike-hero-column">
-                <div class="bike-splide" id="bike-offers-carousel">
-                    <div class="bike-splide__track">
-                        <ul class="bike-splide__list">
-                            <li class="bike-splide__slide">
-                                <a href="/bikes/road-bike-special">
-                                    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Road Bike Special Offer">
-                                </a>
-                            </li>
-                            <li class="bike-splide__slide">
-                                <a href="/bikes/mountain-bike-deal">
-                                    <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mountain Bike Deal">
-                                </a>
-                            </li>
-                            <li class="bike-splide__slide">
-                                <a href="/bikes/commuter-bike-sale">
-                                    <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Commuter Bike Sale">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- Combined Slideshow -->
+        <div class="bike-splide" id="bike-combined-carousel">
+            <div class="bike-splide__track">
+                <ul class="bike-splide__list">
+                    <!-- Bike Slides -->
+                    <li class="bike-splide__slide">
+                        <a href="/bikes/road-bike-special">
+                            <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Road Bike Special Offer">
+                            <div class="slide-caption">Road Bike Special</div>
+                        </a>
+                    </li>
+                    <li class="bike-splide__slide">
+                        <a href="/bikes/mountain-bike-deal">
+                            <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mountain Bike Deal">
+                            <div class="slide-caption">Mountain Bike Deal</div>
+                        </a>
+                    </li>
+                    <li class="bike-splide__slide">
+                        <a href="/bikes/commuter-bike-sale">
+                            <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Commuter Bike Sale">
+                            <div class="slide-caption">Commuter Bike Sale</div>
+                        </a>
+                    </li>
+                    <!-- Equipment Slides -->
+                    <li class="bike-splide__slide">
+                        <a href="/equipment/premium-helmets">
+                            <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Premium Bike Helmets">
+                            <div class="slide-caption">Premium Helmets</div>
+                        </a>
+                    </li>
+                    <li class="bike-splide__slide">
+                        <a href="/equipment/cycling-jerseys">
+                            <img src="https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cycling Jerseys">
+                            <div class="slide-caption">Cycling Jerseys</div>
+                        </a>
+                    </li>
+                    <li class="bike-splide__slide">
+                        <a href="/equipment/bike-lights">
+                            <img src="https://images.unsplash.com/photo-1593764592433-1b3382c615b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bike Lights">
+                            <div class="slide-caption">Bike Lights</div>
+                        </a>
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <!-- Center Column - Heading -->
-            <div class="bike-hero-column bike-hero-heading">
-                <h1>Ride Further, Ride Stronger</h1>
-                <p>Join the Cycling Edge community for premium bikes, expert training, and a network of cycling enthusiasts. Whether you're a beginner or a pro, we've got what you need to elevate your ride.</p>
-                <div class="bike-hero-btns">
-                    <a href="shop.html" class="bike-btn">Explore Bikes</a>
-                    <a href="https://spencemiles.github.io/Market-and-earn-bikeshop/" class="bike-btn bike-btn-outline">Affilliate</a>
-                </div>
-            </div>
-
-            <!-- Right Column - Equipment Carousel -->
-            <div class="bike-hero-column">
-                <div class="bike-splide" id="bike-equipment-carousel">
-                    <div class="bike-splide__track">
-                        <ul class="bike-splide__list">
-                            <li class="bike-splide__slide">
-                                <a href="/equipment/premium-helmets">
-                                    <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Premium Bike Helmets">
-                                </a>
-                            </li>
-                            <li class="bike-splide__slide">
-                                <a href="/equipment/cycling-jerseys">
-                                    <img src="https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cycling Jerseys">
-                                </a>
-                            </li>
-                            <li class="bike-splide__slide">
-                                <a href="/equipment/bike-lights">
-                                    <img src="https://images.unsplash.com/photo-1593764592433-1b3382c615b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bike Lights">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- Center Content -->
+        <div class="bike-hero-content">
+            <h1>Ride Further, Ride Stronger</h1>
+            <p>Join the Cycling Edge community for premium bikes, expert training, and a network of cycling enthusiasts. Whether you're a beginner or a pro, we've got what you need to elevate your ride.</p>
+            <div class="bike-hero-btns">
+                <a href="shop.html" class="bike-btn">Explore Bikes</a>
+                <a href="https://spencemiles.github.io/Market-and-earn-bikeshop/" class="bike-btn bike-btn-outline">Affilliate</a>
             </div>
         </div>
     </div>
@@ -1058,45 +1021,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize bike offers carousel
-            new Splide('#bike-offers-carousel', {
+            // Initialize combined carousel
+            new Splide('#bike-combined-carousel', {
                 type: 'loop',
                 perPage: 1,
                 autoplay: true,
                 interval: 4000,
                 pauseOnHover: true,
-                arrows: window.innerWidth > 768,
-                pagination: false
-            }).mount();
-
-            // Initialize equipment carousel
-            new Splide('#bike-equipment-carousel', {
-                type: 'loop',
-                perPage: 1,
-                autoplay: true,
-                interval: 4500,
-                pauseOnHover: true,
-                arrows: window.innerWidth > 768,
+                arrows: true,
                 pagination: false,
-                direction: window.innerWidth > 768 ? 'ttb' : 'ltr',
-                height: '400px'
-            }).mount();
-
-            // Update carousels on window resize
-            window.addEventListener('resize', function() {
-                const isDesktop = window.innerWidth > 768;
-                document.querySelectorAll('.bike-splide').forEach(el => {
-                    const splide = Splide.getInstance(el);
-                    if (splide) {
-                        splide.options.arrows = isDesktop;
-                        if (el.id === 'bike-equipment-carousel') {
-                            splide.options.direction = isDesktop ? 'ttb' : 'ltr';
-                            splide.options.height = isDesktop ? '400px' : 'auto';
-                        }
-                        splide.refresh();
+                breakpoints: {
+                    768: {
+                        arrows: false,
+                        pagination: true
                     }
-                });
-            });
+                }
+            }).mount();
         });
     </script>
 </section>

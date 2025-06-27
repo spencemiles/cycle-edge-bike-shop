@@ -1,1665 +1,1715 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTir1y0tFbRCHc4OAB39u9NvM23zlDhrpbe-g&s" type="image/png">
-  <!-- your CSS and other head content -->
-</head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cycling Edge - Premium Bikes & Cycling Community</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles */
-        :root {
-            --primary: #ff5e14;
-            --secondary: #222222;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --text: #555555;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body {
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: #e04b0b;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 94, 20, 0.3);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--secondary);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-        
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-        
-        .logo span {
-            color: var(--primary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-            position: relative;
-        }
-        
-        nav ul li a {
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-icons {
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-icons a {
-            margin-left: 20px;
-            font-size: 18px;
-            position: relative;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: var(--primary);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding-top: 80px;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 60px;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            animation: fadeIn 1.5s ease;
-        }
-        
-        .hero-btns .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-        }
-        
-        .hero-btns .btn-outline:hover {
-            background: white;
-            color: var(--secondary);
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background: var(--light);
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            text-align: center;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 50px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        /* Popular Bikes Section */
-        .popular-bikes {
-            padding: 100px 0;
-        }
-        
-        .bikes-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .bike-card {
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        
-        .bike-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .bike-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .bike-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .bike-card:hover .bike-img img {
-            transform: scale(1.1);
-        }
-        
-        .bike-info {
-            padding: 20px;
-        }
-        
-        .bike-category {
-            color: var(--primary);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .bike-title {
-            font-size: 20px;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-        
-        .bike-price {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        
-        .bike-meta {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            margin-top: 15px;
-        }
-        
-        .bike-meta span {
-            font-size: 14px;
-        }
-        
-        /* Cycling Clubs Section */
-        .cycling-clubs {
-            padding: 100px 0;
-            background: var(--light);
-        }
-        
-        .clubs-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        
-        .club-card {
-            background: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        
-        .club-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .club-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--primary);
-        }
-        
-        .club-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .club-card h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: var(--secondary);
-        }
-        
-        .club-location {
-            font-size: 14px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .club-members {
-            font-size: 14px;
-        }
-        
-        /* Cycling Tips Section */
-        .cycling-tips {
-            padding: 100px 0;
-        }
-        
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-        
-        .tip-card {
-            display: flex;
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .tip-img {
-            width: 40%;
-        }
-        
-        .tip-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .tip-content {
-            width: 60%;
-            padding: 30px;
-        }
-        
-        .tip-category {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-size: 12px;
-            margin-bottom: 15px;
-        }
-        
-        .tip-title {
-            font-size: 20px;
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        
-        .tip-excerpt {
-            margin-bottom: 20px;
-        }
-        
-        .read-more {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 80px 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-        }
-        
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 18px;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 80px 0 0;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-col h3 {
-            font-size: 20px;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h3:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background: var(--primary);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-col p {
-            margin-bottom: 20px;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-            list-style: none;
-        }
-        
-        .footer-links a {
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Shop Section Link */
-        .shop-link-section {
-            padding: 60px 0;
-            background: var(--primary);
-            text-align: center;
-            color: white;
-        }
-        
-        .shop-link-section h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .shop-link-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 18px;
-        }
-        
-        .shop-link-section .btn {
-            background: white;
-            color: var(--primary);
-        }
-        
-        .shop-link-section .btn:hover {
-            background: var(--secondary);
-            color: white;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Scroll Animation */
-        .animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .animate.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 300px;
-            height: 100vh;
-            background: white;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            z-index: 1100;
-            transition: all 0.3s;
-            padding: 20px;
-        }
-        
-        .mobile-menu.active {
-            left: 0;
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .close-menu {
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .mobile-nav ul {
-            list-style: none;
-        }
-        
-        .mobile-nav ul li {
-            margin-bottom: 15px;
-        }
-        
-        .mobile-nav ul li a {
-            font-weight: 600;
-            font-size: 18px;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1050;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-        
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .features-grid, .bikes-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .clubs-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero h1 {
-                font-size: 48px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            nav, .nav-icons {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .tips-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tip-card {
-                flex-direction: column;
-            }
-            
-            .tip-img, .tip-content {
-                width: 100%;
-            }
-            
-            .clubs-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .features-grid, .bikes-grid, .clubs-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title h2 {
-                font-size: 28px;
-            }
-            
-            .cta h2, .shop-link-section h2 {
-                font-size: 28px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-inner">
-                <div class="logo">Cycling<span>Edge</span></div>
-                
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="#clubs">Clubs</a></li>
-                        <li><a href="repairs.html">repairs</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <div class="mobile-menu-header">
-            <div class="logo">Cycling<span>Edge</span></div>
-            <div class="close-menu"><i class="fas fa-times"></i></div>
-        </div>
-        
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="#">Clubs</a></li>
-                <li><a href="aboutus.html">About Us</a></li>
-                <li><a href="#">Training</a></li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="repairs.html">repairs</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-    
-    <div class="overlay"></div>
-    
-    <!-- Hero Section -->
-<section class="jumia-style-section">
-  <!-- CSS Styles -->
+  <title>Cycling Edge - Premium Bikes & Cycling Community</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .jumia-style-section {
-      --primary-color: #f68b1e;
-      --secondary-color: #ff9900;
-      --dark-color: #333;
-      --light-color: #fff;
-      --gray-color: #f5f5f5;
-      --text-dark: #333;
-      --text-light: #fff;
-      --text-gray: #666;
-      font-family: 'Roboto', Arial, sans-serif;
+    /* Global Styles */
+    :root {
+      --primary: #ff5e14;
+      --secondary: #222222;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --text: #555555;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .container {
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 15px;
+      padding: 0 15px;
     }
-
-    /* Header Styles */
-    .jumia-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-      margin-bottom: 15px;
-    }
-
-    .jumia-logo {
-      height: 40px;
-    }
-
-    .jumia-search {
-      flex-grow: 1;
-      margin: 0 20px;
-      position: relative;
-    }
-
-    .jumia-search input {
-      width: 100%;
-      padding: 12px 20px;
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      font-size: 14px;
-    }
-
-    .jumia-search button {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: 50px;
-      background: var(--primary-color);
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--primary);
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s;
       border: none;
-      border-radius: 0 4px 4px 0;
-      color: var(--light-color);
       cursor: pointer;
     }
-
-    .jumia-nav {
+    
+    .btn:hover {
+      background: #e04b0b;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 94, 20, 0.3);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 36px;
+      color: var(--secondary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    /* Sticky Header Styles */
+    .promo-banner {
+      background: linear-gradient(to right, #e53e3e, #dd4b39);
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transform: translateY(0);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                  opacity 0.3s ease;
+      opacity: 1;
+      height: 60px;
       display: flex;
+      align-items: center;
+    }
+    
+    .promo-banner.hidden {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .promo-content {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .promo-banner h1 {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 700;
+      margin: 0;
+      white-space: nowrap;
+    }
+    
+    .promo-banner h2 {
+      font-size: clamp(14px, 1.8vw, 16px);
+      margin: 0;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    
+    .promo-banner h2 span {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    
+    .shop-now-btn {
+      background-color: white;
+      color: #dd4b39;
+      padding: 6px 16px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 20px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-size: clamp(12px, 1.6vw, 14px);
+      white-space: nowrap;
+    }
+    
+    .shop-now-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    /* Main Header Styles */
+    .main-header {
+      background-color: white;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      height: 70px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .main-header.sticky {
+      top: 0;
+      animation: headerSticky 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    @keyframes headerSticky {
+      0% { top: 60px; }
+      100% { top: 0; }
+    }
+    
+    .header-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .header-logo {
+      font-size: clamp(20px, 2.2vw, 24px);
+      font-weight: 700;
+      color: #333;
+      transition: transform 0.3s ease;
+    }
+    
+    .header-logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .header-logo span {
+      color: #dd4b39;
+    }
+    
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
       gap: 15px;
     }
-
-    .jumia-nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: var(--text-dark);
+    
+    .main-nav ul li a {
       text-decoration: none;
-      font-size: 12px;
+      color: #333;
+      font-weight: 500;
+      font-size: clamp(14px, 1.6vw, 16px);
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      position: relative;
+      white-space: nowrap;
     }
-
-    .jumia-nav-icon {
-      font-size: 20px;
+    
+    .main-nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #dd4b39;
+      transition: width 0.3s ease;
+    }
+    
+    .main-nav ul li a:hover {
+      color: #dd4b39;
+    }
+    
+    .main-nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+      transition: transform 0.3s ease;
+      padding: 5px;
+      background: none;
+      border: none;
+    }
+    
+    .mobile-menu-btn:hover {
+      transform: scale(1.1);
+      color: #dd4b39;
+    }
+    
+    /* Mobile Navigation */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 85%;
+      max-width: 320px;
+      height: 100vh;
+      background-color: white;
+      z-index: 1100;
+      transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+    
+    .mobile-nav.active {
+      left: 0;
+    }
+    
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #eee;
+      background-color: #f9f9f9;
+    }
+    
+    .close-menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+      transition: transform 0.3s ease;
+      padding: 5px;
+      background: none;
+      border: none;
+    }
+    
+    .close-menu-btn:hover {
+      transform: rotate(90deg);
+      color: #dd4b39;
+    }
+    
+    .mobile-nav-links {
+      padding: 20px;
+    }
+    
+    .mobile-nav-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .mobile-nav-links ul li {
+      margin-bottom: 20px;
+    }
+    
+    .mobile-nav-links ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      display: block;
+      padding: 8px 0;
+    }
+    
+    .mobile-nav-links ul li a:hover {
+      color: #dd4b39;
+    }
+    
+    /* Overlay */
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1099;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding-top: 130px; /* Adjusted for sticky header */
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      animation: fadeIn 1.5s ease;
+    }
+    
+    .hero-btns .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+    }
+    
+    .hero-btns .btn-outline:hover {
+      background: white;
+      color: var(--secondary);
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 100px 0;
+      background: var(--light);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      font-size: 50px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .feature-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--secondary);
+    }
+    
+    /* Popular Bikes Section */
+    .popular-bikes {
+      padding: 100px 0;
+    }
+    
+    .bikes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    
+    .bike-card {
+      background: white;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+    }
+    
+    .bike-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .bike-img {
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .bike-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .bike-card:hover .bike-img img {
+      transform: scale(1.1);
+    }
+    
+    .bike-info {
+      padding: 20px;
+    }
+    
+    .bike-category {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
       margin-bottom: 5px;
     }
-
-    /* Main Slider */
-    .jumia-main-slider {
-      position: relative;
-      margin-bottom: 20px;
-      border-radius: 8px;
+    
+    .bike-title {
+      font-size: 20px;
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+    
+    .bike-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+    
+    .bike-meta {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+    
+    .bike-meta span {
+      font-size: 14px;
+    }
+    
+    /* Cycling Clubs Section */
+    .cycling-clubs {
+      padding: 100px 0;
+      background: var(--light);
+    }
+    
+    .clubs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    
+    .club-card {
+      background: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+    }
+    
+    .club-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .club-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border: 2px solid var(--primary);
     }
-
-    .jumia-slide {
-      position: relative;
-      height: 300px;
-    }
-
-    .jumia-slide img {
+    
+    .club-logo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    .jumia-slide-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      color: var(--light-color);
-      padding: 20px;
-    }
-
-    .jumia-slide-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .jumia-slide-subtitle {
-      font-size: 16px;
-    }
-
-    .jumia-slider-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 15px;
-      z-index: 2;
-    }
-
-    .jumia-slider-btn {
-      background: rgba(255,255,255,0.5);
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .jumia-slider-btn:hover {
-      background: rgba(255,255,255,0.8);
-    }
-
-    /* Category Grid */
-    .jumia-categories {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .jumia-category {
-      background: var(--light-color);
-      border-radius: 8px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .jumia-category:hover {
-      transform: translateY(-5px);
-    }
-
-    .jumia-category img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
+    
+    .club-card h3 {
+      font-size: 18px;
       margin-bottom: 10px;
+      color: var(--secondary);
     }
-
-    .jumia-category-title {
-      font-size: 12px;
-      color: var(--text-dark);
-    }
-
-    /* Flash Sale */
-    .jumia-flash-sale {
-      background: var(--light-color);
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .jumia-section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    
+    .club-location {
+      font-size: 14px;
+      color: var(--primary);
       margin-bottom: 15px;
     }
-
-    .jumia-section-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-dark);
-    }
-
-    .jumia-section-link {
-      color: var(--primary-color);
-      text-decoration: none;
+    
+    .club-members {
       font-size: 14px;
     }
-
-    .jumia-products {
+    
+    /* Cycling Tips Section */
+    .cycling-tips {
+      padding: 100px 0;
+    }
+    
+    .tips-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+    
+    .tip-card {
+      display: flex;
+      background: white;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .tip-img {
+      width: 40%;
+    }
+    
+    .tip-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .tip-content {
+      width: 60%;
+      padding: 30px;
+    }
+    
+    .tip-category {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+    
+    .tip-title {
+      font-size: 20px;
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+    
+    .tip-excerpt {
+      margin-bottom: 20px;
+    }
+    
+    .read-more {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+    }
+    
+    .cta h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: white;
+      padding: 80px 0 0;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .footer-col h3 {
+      font-size: 20px;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-col h3:after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .footer-col p {
+      margin-bottom: 20px;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+      list-style: none;
+    }
+    
+    .footer-links a {
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
       gap: 15px;
     }
-
-    .jumia-product {
-      background: var(--gray-color);
-      border-radius: 8px;
-      padding: 10px;
-      transition: all 0.3s;
-    }
-
-    .jumia-product:hover {
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .jumia-product-img {
-      height: 120px;
+    
+    .social-links a {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
     }
-
-    .jumia-product img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
     }
-
-    .jumia-product-title {
-      font-size: 12px;
-      color: var(--text-dark);
-      margin-bottom: 5px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    
+    .footer-bottom {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    .jumia-product-price {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--primary-color);
+    
+    /* Shop Section Link */
+    .shop-link-section {
+      padding: 60px 0;
+      background: var(--primary);
+      text-align: center;
+      color: white;
     }
-
-    .jumia-product-old-price {
-      font-size: 10px;
-      color: var(--text-gray);
-      text-decoration: line-through;
-      margin-left: 5px;
+    
+    .shop-link-section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
     }
-
-    .jumia-product-discount {
-      background: var(--primary-color);
-      color: var(--light-color);
-      font-size: 10px;
-      padding: 2px 5px;
-      border-radius: 3px;
-      margin-left: 5px;
+    
+    .shop-link-section p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 18px;
     }
-
+    
+    .shop-link-section .btn {
+      background: white;
+      color: var(--primary);
+    }
+    
+    .shop-link-section .btn:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
-    @keyframes slideIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-
-    .animated {
-      animation: fadeIn 0.5s ease-out;
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-
-    .slide-animated {
-      animation: slideIn 0.5s ease-out;
+    
+    /* Scroll Animation */
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
     }
-
+    
+    .animate.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
     /* Responsive Styles */
     @media (max-width: 992px) {
-      .jumia-categories {
+      .features-grid, .bikes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .clubs-grid {
         grid-template-columns: repeat(3, 1fr);
       }
       
-      .jumia-products {
-        grid-template-columns: repeat(3, 1fr);
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .hero h1 {
+        font-size: 48px;
       }
     }
-
+    
     @media (max-width: 768px) {
-      .jumia-header {
+      .promo-banner {
+        height: 50px;
+        padding: 8px 15px;
+      }
+      
+      .promo-content {
+        justify-content: space-between;
+        gap: 5px;
+      }
+      
+      .promo-banner h1 {
+        font-size: 14px;
+      }
+      
+      .promo-banner h2 {
+        font-size: 12px;
+        display: none;
+      }
+      
+      .shop-now-btn {
+        margin-left: 10px;
+        padding: 4px 12px;
+        font-size: 12px;
+      }
+      
+      .main-header {
+        top: 50px;
+        height: 60px;
+      }
+      
+      .main-nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .header-logo {
+        font-size: 20px;
+      }
+      
+      .hero {
+        padding-top: 110px;
+      }
+      
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero p {
+        font-size: 16px;
+      }
+      
+      .hero-btns {
         flex-direction: column;
         gap: 15px;
       }
       
-      .jumia-search {
-        margin: 10px 0;
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tip-card {
+        flex-direction: column;
+      }
+      
+      .tip-img, .tip-content {
         width: 100%;
       }
       
-      .jumia-nav {
-        width: 100%;
-        justify-content: space-between;
-      }
-      
-      .jumia-categories {
+      .clubs-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .jumia-products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .jumia-slide {
-        height: 200px;
       }
     }
-
-    @media (max-width: 480px) {
-      .jumia-categories {
+    
+    @media (max-width: 576px) {
+      .features-grid, .bikes-grid, .clubs-grid {
         grid-template-columns: 1fr;
       }
       
-      .jumia-products {
+      .footer-content {
         grid-template-columns: 1fr;
       }
+      
+      .section-title h2 {
+        font-size: 28px;
+      }
+      
+      .cta h2, .shop-link-section h2 {
+        font-size: 28px;
+      }
+      
+      .promo-banner h2 {
+        display: none;
+      }
+      
+      .shop-now-btn {
+        margin-left: 5px;
+        padding: 3px 8px;
+      }
+    }
+    
+    /* Button Styles */
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #7e97b8;
+      background-color: #e0e8ef;
+      border-style: solid;
+      border-width: 2px 2px 2px 2px;
+      border-color: rgba(255, 255, 255, 0.333);
+      border-radius: 40px 40px 40px 40px;
+      padding: 16px 24px 16px 28px;
+      transform: translate(0px, 0px) rotate(0deg);
+      transition: 0.2s;
+      box-shadow: -4px -2px 16px 0px #ffffff, 4px 2px 16px 0px rgb(95 157 231 / 48%);
+      width: 100%;
+      margin-top: 15px;
+    }
+    
+    .cta-btn:hover {
+      color: #516d91;
+      background-color: #E5EDF5;
+      box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
+    }
+    
+    .cta-btn:active {
+      box-shadow: none;
+    }
+    
+    .insta-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #dd4b39;
+      font-weight: 600;
     }
   </style>
-
-  <!-- HTML Content -->
-  <div class="jumia-header">
-    <img src="https://www.jumia.co.ke/assets_he/images/jumia-logo.svg" alt="Jumia" class="jumia-logo">
-    
-    <div class="jumia-search">
-      <input type="text" placeholder="Search products, brands and categories...">
-      <button>🔍</button>
-    </div>
-    
-    <div class="jumia-nav">
-      <a href="#" class="jumia-nav-item">
-        <span class="jumia-nav-icon">👤</span>
-        <span>Account</span>
-      </a>
-      <a href="#" class="jumia-nav-item">
-        <span class="jumia-nav-icon">❤️</span>
-        <span>Wishlist</span>
-      </a>
-      <a href="#" class="jumia-nav-item">
-        <span class="jumia-nav-icon">🛒</span>
-        <span>Cart</span>
-      </a>
+</head>
+<body>
+  <!-- Promo Banner -->
+  <div class="promo-banner">
+    <div class="promo-content">
+      <h1>LAST CHANCE TO UPGRADE YOUR RIDE</h1>
+      <h2>With <span>CyclingEdge</span> exclusive offers</h2>
+      <a href="#" class="shop-now-btn">SHOP NOW</a>
     </div>
   </div>
 
-  <!-- Main Slider -->
-  <div class="jumia-main-slider animated">
-    <div class="jumia-slide">
-      <img src="https://ke.jumia.is/cms/2023/W25/KE_HP_Slider_1242x450_1.jpg" alt="Slide 1">
-      <div class="jumia-slide-content">
-        <h2 class="jumia-slide-title">Supermarket Deals</h2>
-        <p class="jumia-slide-subtitle">Up to 50% off on groceries</p>
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="header-inner">
+        <div class="header-logo">Cycling<span>Edge</span></div>
+        
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="#clubs">Clubs</a></li>
+            <li><a href="repairs.html">Repairs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
-    
-    <div class="jumia-slider-nav">
-      <button class="jumia-slider-btn">❮</button>
-      <button class="jumia-slider-btn">❯</button>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="header-logo">Cycling<span>Edge</span></div>
+      <button class="close-menu-btn"><i class="fas fa-times"></i></button>
     </div>
+
+    <nav class="mobile-nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="#clubs">Clubs</a></li>
+        <li><a href="repairs.html">Repairs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 
-  <!-- Categories -->
-  <div class="jumia-categories">
-    <div class="jumia-category slide-animated" style="animation-delay: 0.1s;">
-      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Smartphones.png" alt="Phones">
-      <div class="jumia-category-title">Phones & Tablets</div>
-    </div>
-    <div class="jumia-category slide-animated" style="animation-delay: 0.2s;">
-      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Electronics.png" alt="Electronics">
-      <div class="jumia-category-title">Electronics</div>
-    </div>
-    <div class="jumia-category slide-animated" style="animation-delay: 0.3s;">
-      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Fashion.png" alt="Fashion">
-      <div class="jumia-category-title">Fashion</div>
-    </div>
-    <div class="jumia-category slide-animated" style="animation-delay: 0.4s;">
-      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Computing.png" alt="Computing">
-      <div class="jumia-category-title">Computing</div>
-    </div>
-    <div class="jumia-category slide-animated" style="animation-delay: 0.5s;">
-      <img src="https://ke.jumia.is/cms/2020/W20/IconUpdate/Supermarket.png" alt="Supermarket">
-      <div class="jumia-category-title">Supermarket</div>
-    </div>
-  </div>
+  <!-- Overlay -->
+  <div class="nav-overlay"></div>
 
-  <!-- Flash Sale -->
-  <div class="jumia-flash-sale slide-animated">
-    <div class="jumia-section-header">
-      <h3 class="jumia-section-title">Flash Sale ⚡</h3>
-      <a href="#" class="jumia-section-link">See All</a>
-    </div>
-    
-    <div class="jumia-products">
-      <div class="jumia-product">
-        <div class="jumia-product-img">
-          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/18/847944/1.jpg" alt="Product 1">
-        </div>
-        <h4 class="jumia-product-title">Samsung Galaxy A04 64GB 4GB RAM - Black</h4>
-        <div>
-          <span class="jumia-product-price">KSh 12,999</span>
-          <span class="jumia-product-old-price">KSh 15,999</span>
-          <span class="jumia-product-discount">-19%</span>
-        </div>
-      </div>
-      
-      <div class="jumia-product">
-        <div class="jumia-product-img">
-          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/39/767804/1.jpg" alt="Product 2">
-        </div>
-        <h4 class="jumia-product-title">Tecno Spark 10 Pro 256GB 8GB RAM - Starry Black</h4>
-        <div>
-          <span class="jumia-product-price">KSh 22,999</span>
-          <span class="jumia-product-old-price">KSh 25,999</span>
-          <span class="jumia-product-discount">-12%</span>
-        </div>
-      </div>
-      
-      <div class="jumia-product">
-        <div class="jumia-product-img">
-          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/03/847944/1.jpg" alt="Product 3">
-        </div>
-        <h4 class="jumia-product-title">Infinix Hot 30 Play 64GB 4GB RAM - Aurora Blue</h4>
-        <div>
-          <span class="jumia-product-price">KSh 13,999</span>
-          <span class="jumia-product-old-price">KSh 16,999</span>
-          <span class="jumia-product-discount">-18%</span>
-        </div>
-      </div>
-      
-      <div class="jumia-product">
-        <div class="jumia-product-img">
-          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/85/847944/1.jpg" alt="Product 4">
-        </div>
-        <h4 class="jumia-product-title">Oraimo 10000mAh Power Bank - Black</h4>
-        <div>
-          <span class="jumia-product-price">KSh 1,999</span>
-          <span class="jumia-product-old-price">KSh 2,499</span>
-          <span class="jumia-product-discount">-20%</span>
-        </div>
-      </div>
-      
-      <div class="jumia-product">
-        <div class="jumia-product-img">
-          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/12/847944/1.jpg" alt="Product 5">
-        </div>
-        <h4 class="jumia-product-title">Nivea Men Dark Spot Reduction Cream 50ml</h4>
-        <div>
-          <span class="jumia-product-price">KSh 499</span>
-          <span class="jumia-product-old-price">KSh 599</span>
-          <span class="jumia-product-discount">-17%</span>
-        </div>
-      </div>
-      
-      <div class="jumia-product">
-        <div class="jumia-product-img">
-          <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/47/847944/1.jpg" alt="Product 6">
-        </div>
-        <h4 class="jumia-product-title">Adidas Unisex Backpack - Black</h4>
-        <div>
-          <span class="jumia-product-price">KSh 2,499</span>
-          <span class="jumia-product-old-price">KSh 3,999</span>
-          <span class="jumia-product-discount">-38%</span>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Ride Further, Ride Stronger</h1>
+        <p>Discover premium bikes, join cycling clubs, and elevate your riding experience with our expert training programs.</p>
+        <div class="hero-btns">
+          <a href="shop.html" class="btn">Shop Bikes</a>
+          <a href="#clubs" class="btn btn-outline">Find Clubs</a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Product Ads</title>
+    <style>
+        /* Ad Container Styles */
+        .ad-container {
+            position: fixed;
+            width: 250px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            z-index: 9999;
+            transition: all 0.5s ease;
+            animation: fadeIn 0.5s ease-in-out;
+            overflow: hidden;
+        }
 
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Simple slider functionality
-      const slides = document.querySelectorAll('.jumia-slide');
-      const prevBtn = document.querySelector('.jumia-slider-btn:first-child');
-      const nextBtn = document.querySelector('.jumia-slider-btn:last-child');
-      let currentSlide = 0;
-      
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.style.display = i === index ? 'block' : 'none';
-        });
-      }
-      
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }
-      
-      function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-      }
-      
-      // Initialize slider
-      showSlide(0);
-      nextBtn.addEventListener('click', nextSlide);
-      prevBtn.addEventListener('click', prevSlide);
-      
-      // Auto slide
-      setInterval(nextSlide, 5000);
-      
-      // Animation on scroll
-      const animatedElements = document.querySelectorAll('.slide-animated');
-      
-      function checkScroll() {
-        animatedElements.forEach(el => {
-          const elTop = el.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          
-          if (elTop < windowHeight - 100) {
-            el.style.opacity = 1;
-            el.style.transform = 'translateY(0)';
-          }
-        });
-      }
-      
-      window.addEventListener('scroll', checkScroll);
-      window.addEventListener('load', checkScroll);
-    });
-  </script>
-</section>
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-title animate">
-                <h2>Why Choose Cycling Edge</h2>
-                <p>We offer everything a cyclist needs in one platform</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-bicycle"></i>
-                    </div>
-                    <h3>Premium Bikes</h3>
-                    <p>Discover our curated selection of high-performance bikes from top brands worldwide.</p>
-                </div>
-                
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Cycling Clubs</h3>
-                    <p>Connect with local cycling clubs and join group rides in your area.</p>
-                </div>
-                
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Training Programs</h3>
-                    <p>From beginner to advanced, our certified coaches will help you improve your skills.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Popular Bikes Section -->
-    <section class="popular-bikes">
-        <div class="container">
-            <div class="section-title animate">
-                <h2>Popular Bikes</h2>
-                <p>Check out our best selling models</p>
-            </div>
-            
-            <div class="bikes-grid">
-          <div class="bike-card animate">
-  <div class="bike-img">
-    <img src="https://iili.io/FTN7fbR.md.jpg" alt="Merida Road Bike">
-  </div>
-  <div class="bike-info">
-    <div class="bike-category">Road Bike</div>
-    <h3 class="bike-title">MERIDA - Shimano Groupset</h3>
-    <div class="bike-price">KSH. 40,000</div>
-    <div class="bike-meta">
-      <span><i class="fas fa-cogs"></i> Shimano Drivetrain</span>
-      <span><i class="fas fa-bicycle"></i> Aluminum Frame - Medium</span>
-    </div>
-    <button 
-      class="cta-btn" 
-      onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20Merida%20Road%20Bike%20for%20KSH%2040%2C000'"
-    >
-      Contact Us on WhatsApp
-    </button>
-  </div>
-</div>
+        /* Different positions for the ads */
+        .top-left {
+            top: 20px;
+            left: 20px;
+            transform: translateX(-300px);
+        }
 
-                
-             <div class="bike-card animate">
-  <div class="bike-img">
-    <img src="https://iili.io/FTNJ0XV.md.jpg" alt="TT ORBEA Road Bike">
-  </div>
-  <div class="bike-info">
-    <div class="bike-category">Road Bike (TT)</div>
-    <h3 class="bike-title">ORBEA - Ultegra 10-speed</h3>
-    <div class="bike-price">KSH. 145,000</div>
-    <div class="bike-meta">
-      <span><i class="fas fa-cogs"></i> 10-speed Ultegra</span>
-      <span><i class="fas fa-bicycle"></i> Carbon Frame - 52cm</span>
-    </div>
-    <button 
-      class="cta-btn" 
-      onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20TT%20ORBEA%20Road%20Bike%20with%20Ultegra%2010-speed%20Groupset%2C%20Carbon%20Frame%20(52cm)%20for%20KSH%20145%2C000'"
-    >
-      Contact Us on WhatsApp
-    </button>
-  </div>
-</div>
+        .top-right {
+            top: 20px;
+            right: 20px;
+            transform: translateX(300px);
+        }
 
-                
-               <div class="bike-card animate">
-  <div class="bike-img">
-    <img src="https://iili.io/FTN73Ja.md.jpg" alt="Momentum Road Bike">
-  </div>
-  <div class="bike-info">
-    <div class="bike-category">Road Bike</div>
-    <h3 class="bike-title">MOMENTUM - Shimano Groupset</h3>
-    <div class="bike-price">KSH. 50,000</div>
-    <div class="bike-meta">
-      <span><i class="fas fa-cogs"></i> Shimano Drivetrain</span>
-      <span><i class="fas fa-bicycle"></i> Aluminum Frame - Medium</span>
-    </div>
-    <button 
-      class="cta-btn" 
-      onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20Momentum%20Road%20Bike%20for%20KSH%2050%2C000'"
-    >
-      Contact Us on WhatsApp
-    </button>
-  </div>
-</div>
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            transform: translateX(-300px);
+        }
 
-            </div>
-        </div>
-    </section>
-    
-    <!-- Cycling Clubs Section -->
-   <section class="cycling-clubs"> 
-  <div class="container">
-    <div class="section-title animate">
-      <h2>Featured Nairobi Cycling Clubs</h2>
-      <p>Join a community of passionate cyclists in the city</p>
-    </div>
-    
-    <div class="clubs-grid">
-      <!-- 1. Nairobi Pedal Crew -->
-      <div class="club-card animate">
-        <div class="club-logo">
-          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Nairobi Pedal Crew">
-        </div>
-        <h3>East pedals cycling club</h3>
-        <div class="club-location">Nairobi</div>
-        <div class="club-members">150+ members</div>
-        <a href="https://www.instagram.com/east_pedals_cycling_club?utm_source=ig_web_button_share_sheet&igsh=Z3g2OWtyMHBzcXlh" target="_blank" class="insta-link">Follow on Instagram</a>
-      </div>
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            transform: translateX(300px);
+        }
 
-      <!-- 2. Rongai Cyclers -->
-      <div class="club-card animate">
-        <div class="club-logo">
-          <img src="https://images.unsplash.com/photo-1530133532239-eda6f53fcf0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Rongai Cyclers">
-        </div>
-        <h3>Mama cycling</h3>
-        <div class="club-location">Nairobi</div>
-        <div class="club-members">120+ members</div>
-        <a href="https://www.instagram.com/mamacycling/?utm_source=ig_web_button_share_sheet" target="_blank" class="insta-link">Follow on Instagram</a>
-        <a href="https://mama.or.ke/?fbclid=PAZXh0bgNhZW0CMTEAAaewltvbCGLXICGvX5XoRq6jukOVyt4azP8JohzVJG1yN-U9jzyt9p-B1FNqvw_aem_us1bq-5bhyZMiCQ1x4IxZQ" target="_blank" class="insta-link">Follow on Instagram</a>
-      </div>
+        /* When ad is active */
+        .ad-container.active {
+            transform: translateX(0);
+        }
 
-      <!-- 3. Thika Road Warriors -->
-      <div class="club-card animate">
-        <div class="club-logo">
-          <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Thika Road Warriors">
-        </div>
-        <h3>Thika Road Warriors</h3>
-        <div class="club-location">Thika Road</div>
-        <div class="club-members">300+ members</div>
-        <a href="https://instagram.com/thikaroadwarriors" target="_blank" class="insta-link">Follow on Instagram</a>
-      </div>
+        /* Close button */
+        .close-ad {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.2s;
+        }
 
-      <!-- 4. Karen Trail Blazers -->
-      <div class="club-card animate">
-        <div class="club-logo">
-          <img src="https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1474&q=80" alt="Karen Trail Blazers">
-        </div>
-        <h3>Karen Trail Blazers</h3>
-        <div class="club-location">Karen & Ngong Hills</div>
-        <div class="club-members">190+ members</div>
-        <a href="https://instagram.com/karencyclists" target="_blank" class="insta-link">Follow on Instagram</a>
-      </div>
-    </div>
-  </div>
-</section>
+        .close-ad:hover {
+            color: #333;
+        }
 
-    <!-- Cycling Tips Section -->
-    <section class="cycling-tips">
-        <div class="container">
-            <div class="section-title animate">
-                <h2>Cycling Tips & Guides</h3>
-                <p>Learn from our experts</p>
-            </div>
-            
-            <div class="tips-grid">
-                <div class="tip-card animate">
-                    <div class="tip-img">
-                        <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Training Tips">
-                    </div>
-                    <div class="tip-content">
-                        <div class="tip-category">Training</div>
-                        <h3 class="tip-title">5 Essential Training Tips for Beginner Cyclists</h3>
-                        <p class="tip-excerpt">Starting your cycling journey? These fundamental tips will help you build endurance and technique safely.</p>
-                        <a href="https://relentlessbikes.com/blogs/news/5-essential-biking-tips-for-beginner-cyclists?srsltid=AfmBOoqi9bCAmp0Tkm9_82cYQLP7_dtVhCDglLGdkWoaMkNTqw8Vx11r" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="tip-card animate">
-                    <div class="tip-img">
-                        <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Maintenance Guide">
-                    </div>
-                    <div class="tip-content">
-                        <div class="tip-category">Maintenance</div>
-                        <h3 class="tip-title">Bike Maintenance 101: Keep Your Ride in Top Shape</h3>
-                        <p class="tip-excerpt">Learn the basic maintenance routines every cyclist should know to extend their bike's lifespan.</p>
-                        <a href="https://onyourleft.bike/biking-maintenance-101-how-to-keep-your-bike-in-top-shape/" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Shop Link Section -->
-    <section class="shop-link-section">
-        <div class="container">
-            <h2 class="animate">Explore Our Shop</h2>
-            <p class="animate">Discover our wide range of bikes, accessories, and cycling gear for all levels and disciplines.</p>
-            <a href="shop.html" class="btn animate">Visit Shop</a>
-        </div>
-    </section>
-    
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2 class="animate">Ready to Start Your Cycling Journey?</h2>
-            <p class="animate">Join thousands of cyclists who trust Cycling Edge for their biking needs, training, and community.</p>
-            <a href="https://chat.whatsapp.com/Gq0qiK9kJK33VXO2tzqzjq" class="btn animate">Get Started</a>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>About Cycling Edge</h3>
-                    <p>Cycling Edge is a premier platform connecting cyclists with premium bikes, training programs, and local cycling clubs across the country.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="repairs.html">repairs</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="#clubs">Clubs</a></li>
-                        <li><a href="https://wa.me/254790617211?text=Hi!%20I%20have%20a%20question%20about%20your%20bikes%20or%20services.">Training</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Customer Service</h3>
-                    <ul class="footer-links">
-                      <a href="https://wa.me/254790617211?text=Hi!%20I%20have%20a%20question%20about%20your%20bikes%20or%20services." target="_blank">
-    FAQs (Chat with Us)
-  </a>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> manyanja road bike shop</p>
-                    <p><i class="fas fa-phone"></i> +254790617211</p>
-                    <p><i class="fas fa-envelope"></i> spencemiles0@gmail.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Cycling Edge. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-    
+        /* Ad content styling */
+        .ad-image {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .ad-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 40px;
+        }
+
+        .ad-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #B12704;
+            margin-bottom: 10px;
+        }
+
+        .ad-cta {
+            display: block;
+            width: 100%;
+            padding: 8px 0;
+            background: #FFA41C;
+            color: #111;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .ad-cta:hover {
+            background: #FF8F00;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-300px); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(300px); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- This div will be dynamically created by JavaScript -->
+    <!-- <div class="ad-container">
+        <button class="close-ad">✕</button>
+        <img src="product-image.jpg" class="ad-image">
+        <div class="ad-title">Product Name Here</div>
+        <div class="ad-price">$29.99</div>
+        <a href="#" class="ad-cta">Get It Now</a>
+    </div> -->
+
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const closeMenu = document.querySelector('.close-menu');
-        const overlay = document.querySelector('.overlay');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-        });
-        
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-        
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-        
-        // Scroll Animation
-        const animateElements = document.querySelectorAll('.animate');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Amazon product ads data
+            const ads = [
+                {
+                    image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/c1c160b8-2d13-43a6-8432-7a48dd3816ba.__CR0,0,1464,600_PT0_SX1464_V1___.jpg",
+                    title: "Bike Lights Set 1500LM USB Rechargeable Bicycle Headlight & Tail Light Waterproof 5 Lighting Modes Fits Bicycles for Road and Mountain",
+                    price: "$37",
+                    link: "https://amzn.to/4njTmnf"
+                },
+                {
+                    image: "https://image.kilimall.com/kenya/shop/store/goods/7309/2022/04/1650385691103e92574f9666d4feabef1b5c9c68263d7.png",
+                    title: "Best price for SD576C Wireless Bicycle Computer Bike Speedometer Odometer with LCD Backlight",
+                    price: "ksh.12,800",
+                    link: "http://k.kili.co/1y9g5"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/8985c08d-2d73-48e0-9aec-5eef57c06597.__CR0,0,1464,600_PT0_SX1464_V1___.jpg",
+                    title: "Bike Helmet, Smart App Program Bike Helmet with USB Rechargeable Light, Back Light Mountain for Adult&Men Women, with Turn Signals Remote Control",
+                    price: "$55",
+                    link: "https://amzn.to/4lqW2xt"
+                },
+                {
+                    image: "https://www.ridemedia.com.au/wp-content/uploads/2024/03/GoPro-Experiment-02-1.jpg",
+                    title: "Kindle Paperwhite (8 GB) – Now with a 6.8\" display and adjustable warm light",
+                    price: "ksh.",
+                    link: "https://www.amazon.com/dp/B08N38JQ7W"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71Y1S1m-QAL._AC_UL320_.jpg",
+                    title: "Apple AirTag 4 Pack",
+                    price: "$99.00",
+                    link: "https://www.amazon.com/dp/B0932QJ2JZ"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71WkDp--uqL._AC_UL320_.jpg",
+                    title: "PlayStation 5 Console (PS5)",
+                    price: "$499.99",
+                    link: "https://www.amazon.com/dp/B08FC5L3RG"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/61L1ItFgFHL._AC_UL320_.jpg",
+                    title: "Apple 20W USB-C Power Adapter",
+                    price: "$19.00",
+                    link: "https://www.amazon.com/dp/B08L8KR4P6"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71mEsHyzSCL._AC_UL320_.jpg",
+                    title: "Logitech MX Master 3 Advanced Wireless Mouse",
+                    price: "$99.99",
+                    link: "https://www.amazon.com/dp/B07XC2FWD1"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/61XDeaOrrYL._AC_UL320_.jpg",
+                    title: "Apple Watch Series 9 [GPS 41mm] Smartwatch with Storm Blue Aluminum Case",
+                    price: "$399.00",
+                    link: "https://www.amazon.com/dp/B0CHWZ6B8K"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71z7dcuwu6L._AC_UL320_.jpg",
+                    title: "Sony WH-1000XM5 Wireless Industry Leading Headphones with Auto Noise Canceling Optimizer",
+                    price: "$398.00",
+                    link: "https://www.amazon.com/dp/B09XS7JWHH"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71OZY035QVL._AC_UL320_.jpg",
+                    title: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones",
+                    price: "$429.00",
+                    link: "https://www.amazon.com/dp/B0C8LLD4TM"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71S8qt+K8hL._AC_UL320_.jpg",
+                    title: "Samsung Galaxy Tab A9+ 11\" 64GB Android Tablet, Big Screen, Quad Speakers",
+                    price: "$219.99",
+                    link: "https://www.amazon.com/dp/B0CKTRG7K5"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71OZY035QVL._AC_UL320_.jpg",
+                    title: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones",
+                    price: "$429.00",
+                    link: "https://www.amazon.com/dp/B0C8LLD4TM"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71HunpGZWTL._AC_UL320_.jpg",
+                    title: "Ninja AF101 Air Fryer that Crisps, Roasts, Reheats, & Dehydrates",
+                    price: "$99.95",
+                    link: "https://www.amazon.com/dp/B07FDJMC6Q"
+                },
+                {
+                    image: "https://m.media-amazon.com/images/I/71OZY035QVL._AC_UL320_.jpg",
+                    title: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones",
+                    price: "$429.00",
+                    link: "https://www.amazon.com/dp/B0C8LLD4TM"
                 }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        animateElements.forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Header Scroll Effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.background = 'white';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            ];
+
+            // Possible positions for the ads
+            const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+            
+            // Animation classes for each position
+            const animations = {
+                'top-left': 'slideInLeft',
+                'top-right': 'slideInRight',
+                'bottom-left': 'slideInLeft',
+                'bottom-right': 'slideInRight'
+            };
+
+            let currentAd = null;
+            let adInterval = null;
+
+            // Function to show a random ad
+            function showRandomAd() {
+                // Remove current ad if exists
+                if (currentAd) {
+                    currentAd.remove();
+                }
+
+                // Get random ad and position
+                const randomAd = ads[Math.floor(Math.random() * ads.length)];
+                const randomPosition = positions[Math.floor(Math.random() * positions.length)];
+                const animationClass = animations[randomPosition];
+
+                // Create ad element
+                const adElement = document.createElement('div');
+                adElement.className = `ad-container ${randomPosition}`;
+                adElement.innerHTML = `
+                    <button class="close-ad">✕</button>
+                    <img src="${randomAd.image}" class="ad-image">
+                    <div class="ad-title">${randomAd.title}</div>
+                    <div class="ad-price">${randomAd.price}</div>
+                    <a href="${randomAd.link}" target="_blank" class="ad-cta pulse">Get It Now</a>
+                `;
+
+                // Add to body
+                document.body.appendChild(adElement);
+                currentAd = adElement;
+
+                // Trigger animation
+                setTimeout(() => {
+                    adElement.classList.add('active');
+                    adElement.style.animation = `${animationClass} 0.5s forwards`;
+                }, 50);
+
+                // Close button event
+                adElement.querySelector('.close-ad').addEventListener('click', function() {
+                    clearInterval(adInterval);
+                    adElement.style.animation = 'fadeOut 0.5s forwards';
+                    setTimeout(() => {
+                        adElement.remove();
+                        currentAd = null;
+                    }, 500);
+                });
+
+                // Auto-close after 3 seconds
+                setTimeout(() => {
+                    if (currentAd === adElement) {
+                        adElement.style.animation = 'fadeOut 0.5s forwards';
+                        setTimeout(() => {
+                            adElement.remove();
+                            currentAd = null;
+                        }, 500);
+                    }
+                }, 3000);
             }
+
+            // Start showing ads (first one immediately, then every 5 seconds)
+            showRandomAd();
+            adInterval = setInterval(showRandomAd, 5000);
+
+            // Add fadeOut animation dynamically
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeOut {
+                    from { opacity: 1; transform: translateX(0); }
+                    to { opacity: 0; transform: translateX(${Math.random() > 0.5 ? '-' : ''}50px); }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
+</body>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title animate">
+        <h2>Why Choose Cycling Edge</h2>
+        <p>We offer everything a cyclist needs in one platform</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card animate">
+          <div class="feature-icon">
+            <i class="fas fa-bicycle"></i>
+          </div>
+          <h3>Premium Bikes</h3>
+          <p>Discover our curated selection of high-performance bikes from top brands worldwide.</p>
+        </div>
+        
+        <div class="feature-card animate">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Cycling Clubs</h3>
+          <p>Connect with local cycling clubs and join group rides in your area.</p>
+        </div>
+        
+        <div class="feature-card animate">
+          <div class="feature-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Training Programs</h3>
+          <p>From beginner to advanced, our certified coaches will help you improve your skills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Popular Bikes Section -->
+  <section class="popular-bikes">
+    <div class="container">
+      <div class="section-title animate">
+        <h2>Popular Bikes</h2>
+        <p>Check out our best selling models</p>
+      </div>
+      
+      <div class="bikes-grid">
+        <div class="bike-card animate">
+          <div class="bike-img">
+            <img src="https://iili.io/FTN7fbR.md.jpg" alt="Merida Road Bike">
+          </div>
+          <div class="bike-info">
+            <div class="bike-category">Road Bike</div>
+            <h3 class="bike-title">MERIDA - Shimano Groupset</h3>
+            <div class="bike-price">KSH. 40,000</div>
+            <div class="bike-meta">
+              <span><i class="fas fa-cogs"></i> Shimano Drivetrain</span>
+              <span><i class="fas fa-bicycle"></i> Aluminum Frame - Medium</span>
+            </div>
+            <button 
+              class="cta-btn" 
+              onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20Merida%20Road%20Bike%20for%20KSH%2040%2C000'"
+            >
+              Contact Us on WhatsApp
+            </button>
+          </div>
+        </div>
+        
+        <div class="bike-card animate">
+          <div class="bike-img">
+            <img src="https://iili.io/FTNJ0XV.md.jpg" alt="TT ORBEA Road Bike">
+          </div>
+          <div class="bike-info">
+            <div class="bike-category">Road Bike (TT)</div>
+            <h3 class="bike-title">ORBEA - Ultegra 10-speed</h3>
+            <div class="bike-price">KSH. 145,000</div>
+            <div class="bike-meta">
+              <span><i class="fas fa-cogs"></i> 10-speed Ultegra</span>
+              <span><i class="fas fa-bicycle"></i> Carbon Frame - 52cm</span>
+            </div>
+            <button 
+              class="cta-btn" 
+              onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20TT%20ORBEA%20Road%20Bike%20with%20Ultegra%2010-speed%20Groupset%2C%20Carbon%20Frame%20(52cm)%20for%20KSH%20145%2C000'"
+            >
+              Contact Us on WhatsApp
+            </button>
+          </div>
+        </div>
+        
+        <div class="bike-card animate">
+          <div class="bike-img">
+            <img src="https://iili.io/FTN73Ja.md.jpg" alt="Momentum Road Bike">
+          </div>
+          <div class="bike-info">
+            <div class="bike-category">Road Bike</div>
+            <h3 class="bike-title">MOMENTUM - Shimano Groupset</h3>
+            <div class="bike-price">KSH. 50,000</div>
+            <div class="bike-meta">
+              <span><i class="fas fa-cogs"></i> Shimano Drivetrain</span>
+              <span><i class="fas fa-bicycle"></i> Aluminum Frame - Medium</span>
+            </div>
+            <button 
+              class="cta-btn" 
+              onclick="location.href='https://wa.me/+254790617211?text=Interested%20in%20QUICK%20SALE%20-%20Momentum%20Road%20Bike%20for%20KSH%2050%2C000'"
+            >
+              Contact Us on WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Cycling Clubs Section -->
+  <section class="cycling-clubs" id="clubs"> 
+    <div class="container">
+      <div class="section-title animate">
+        <h2>Featured Nairobi Cycling Clubs</h2>
+        <p>Join a community of passionate cyclists in the city</p>
+      </div>
+      
+      <div class="clubs-grid">
+        <div class="club-card animate">
+          <div class="club-logo">
+            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="East Pedals Cycling Club">
+          </div>
+          <h3>East Pedals Cycling Club</h3>
+          <div class="club-location">Nairobi</div>
+          <div class="club-members">150+ members</div>
+          <a href="https://www.instagram.com/east_pedals_cycling_club?utm_source=ig_web_button_share_sheet&igsh=Z3g2OWtyMHBzcXlh" target="_blank" class="insta-link">Follow on Instagram</a>
+        </div>
+
+        <div class="club-card animate">
+          <div class="club-logo">
+            <img src="https://images.unsplash.com/photo-1530133532239-eda6f53fcf0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Mama Cycling">
+          </div>
+          <h3>Mama Cycling</h3>
+          <div class="club-location">Nairobi</div>
+          <div class="club-members">120+ members</div>
+          <a href="https://www.instagram.com/mamacycling/?utm_source=ig_web_button_share_sheet" target="_blank" class="insta-link">Follow on Instagram</a>
+        </div>
+
+        <div class="club-card animate">
+          <div class="club-logo">
+            <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Thika Road Warriors">
+          </div>
+          <h3>Thika Road Warriors</h3>
+          <div class="club-location">Thika Road</div>
+          <div class="club-members">300+ members</div>
+          <a href="https://instagram.com/thikaroadwarriors" target="_blank" class="insta-link">Follow on Instagram</a>
+        </div>
+
+        <div class="club-card animate">
+          <div class="club-logo">
+            <img src="https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1474&q=80" alt="Karen Trail Blazers">
+          </div>
+          <h3>Karen Trail Blazers</h3>
+          <div class="club-location">Karen & Ngong Hills</div>
+          <div class="club-members">190+ members</div>
+          <a href="https://instagram.com/karencyclists" target="_blank" class="insta-link">Follow on Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cycling Tips Section -->
+  <section class="cycling-tips">
+    <div class="container">
+      <div class="section-title animate">
+        <h2>Cycling Tips & Guides</h2>
+        <p>Learn from our experts</p>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card animate">
+          <div class="tip-img">
+            <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Training Tips">
+          </div>
+          <div class="tip-content">
+            <div class="tip-category">Training</div>
+            <h3 class="tip-title">5 Essential Training Tips for Beginner Cyclists</h3>
+            <p class="tip-excerpt">Starting your cycling journey? These fundamental tips will help you build endurance and technique safely.</p>
+            <a href="https://relentlessbikes.com/blogs/news/5-essential-biking-tips-for-beginner-cyclists?srsltid=AfmBOoqi9bCAmp0Tkm9_82cYQLP7_dtVhCDglLGdkWoaMkNTqw8Vx11r" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        
+        <div class="tip-card animate">
+          <div class="tip-img">
+            <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Maintenance Guide">
+          </div>
+          <div class="tip-content">
+            <div class="tip-category">Maintenance</div>
+            <h3 class="tip-title">Bike Maintenance 101: Keep Your Ride in Top Shape</h3>
+            <p class="tip-excerpt">Learn the basic maintenance routines every cyclist should know to extend their bike's lifespan.</p>
+            <a href="https://onyourleft.bike/biking-maintenance-101-how-to-keep-your-bike-in-top-shape/" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Shop Link Section -->
+  <section class="shop-link-section">
+    <div class="container">
+      <h2 class="animate">Explore Our Shop</h2>
+      <p class="animate">Discover our wide range of bikes, accessories, and cycling gear for all levels and disciplines.</p>
+      <a href="shop.html" class="btn animate">Visit Shop</a>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="animate">Ready to Start Your Cycling Journey?</h2>
+      <p class="animate">Join thousands of cyclists who trust Cycling Edge for their biking needs, training, and community.</p>
+      <a href="https://chat.whatsapp.com/Gq0qiK9kJK33VXO2tzqzjq" class="btn animate">Get Started</a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>About Cycling Edge</h3>
+          <p>Cycling Edge is a premier platform connecting cyclists with premium bikes, training programs, and local cycling clubs across the country.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="#clubs">Clubs</a></li>
+            <li><a href="repairs.html">Repairs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Customer Service</h3>
+          <ul class="footer-links">
+            <li><a href="https://wa.me/254790617211?text=Hi!%20I%20have%20a%20question%20about%20your%20bikes%20or%20services." target="_blank">FAQs (Chat with Us)</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Manyanja Road Bike Shop</p>
+          <p><i class="fas fa-phone"></i> +254790617211</p>
+          <p><i class="fas fa-envelope"></i> spencemiles0@gmail.com</p>
+          <p><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cycling Edge. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu elements
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const closeMenuBtn = document.querySelector('.close-menu-btn');
+      const mobileNav = document.querySelector('.mobile-nav');
+      const overlay = document.querySelector('.nav-overlay');
+      
+      // Scroll behavior elements
+      const promoBanner = document.querySelector('.promo-banner');
+      const mainHeader = document.querySelector('.main-header');
+      let lastScroll = 0;
+      const scrollThreshold = 100;
+      
+      // Mobile menu toggle
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      closeMenuBtn.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      overlay.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // Scroll behavior
+      window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+          promoBanner.classList.remove('sticky');
+          mainHeader.classList.remove('sticky');
+          mainHeader.style.top = promoBanner.offsetHeight + 'px';
+          return;
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+          promoBanner.classList.add('sticky');
+          mainHeader.classList.add('sticky');
+        } else if (currentScroll < lastScroll) {
+          promoBanner.classList.remove('sticky');
+          mainHeader.classList.remove('sticky');
+          mainHeader.style.top = promoBanner.offsetHeight + 'px';
+        }
+        
+        lastScroll = currentScroll;
+      });
+      
+      window.addEventListener('resize', function() {
+        if (!mainHeader.classList.contains('sticky')) {
+          mainHeader.style.top = promoBanner.offsetHeight + 'px';
+        }
+      });
+      
+      // Scroll Animation
+      const animateElements = document.querySelectorAll('.animate');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      animateElements.forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>
